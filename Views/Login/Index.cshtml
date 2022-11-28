@@ -1,0 +1,41 @@
+﻿@model IEnumerable<TCC_Sistema_Cliente_Jogos_2022.Models.Produto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (TempData["MensagemAviso"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["MensagemAviso"]
+    </div>
+}
+
+<h2>Página Inicial</h2>
+
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.HiddenFor(modelItem => item.CodProd) <br />
+        </td>
+
+        <td>
+            <img src="@Url.Content(item.ImgCapa)" width="100px" height="100px" /><br />
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.ProdNome) <br />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProdValor)<br />
+        </td>
+        <td>
+            @*@Html.ActionLink("Ver mais (Botão na hora de ver mais)", "DetalhesProduto", "Produto", new { codprod = item.CodProd }) <br />*@
+            <a href="@Url.Action("DetalhesProduto", "Produto", new { codprod = item.CodProd})">
+                Ver mais
+            </a>
+        </td>
+    </tr>
+}

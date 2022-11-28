@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Meu Aplicativo ASP.NET</title>
+    <link rel="shortcut icon" type="image/x-icon" href="~/Image/Icone.ico" />
+
+    <link href="@Url.Content("~/Content/Styles_frontend/foot.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Styles_frontend/navbar.css")" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="@Url.Content("~/Content/Scripts_frontend/foot.js")"></script>
+    @RenderSection("Styles", false)
+    @RenderSection("JavaScript", required: false)
+
+
+
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <!--ABAIXO É A NAVBAR-->
+    
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="mais opções">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+   
+
+    <section class="navigation">
+        <div class="nav-container">
+            <div class="brand">
+                @Html.ActionLink("Página Inicial", "Index", "Login")
+            </div>
+            <nav>
+                <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
+                <ul class="nav-list">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>
+                            @Html.ActionLink("Consultar Funcionarios", "ConsulFuncio", "Funcionario")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Consultar Clientes", "ConsulCli", "Cliente")
+                        </li>
+
+                        <li>
+                            @Html.ActionLink("Consultar Produtos", "ConsulProduto", "Produto")
+                        </li>
+
+                        <li>
+                            @Html.ActionLink("Ver Carrinho", "VerCarrinhoIndex", "Carrinho")
+                        </li>
+
+                        <li>
+                            @Html.ActionLink("Fazer Venda", "FazerVenda", "Carrinho")
+                        </li>
+
+                        <li>
+                            @Html.ActionLink("Consultar Vendas", "ConsulVenda", "Carrinho")
+                        </li>
+
+                        <li>
+                            @Html.ActionLink("Consultar Cupons", "ConsulCupom", "Cupom")
+                        </li>
+
+                        <li>
+
+                            <ul class="nav-dropdown">
+                                <li>
+                                    @Html.ActionLink("Sair", "Logout", "Login")
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            @Html.ActionLink("Consultar Funcionarios", "ConsulFuncio", "Funcionario")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Fazer Login", "Login", "Login")
+                        </li>
+                    }
+
+
+
+
+                </ul>
+            </nav>
+        </div>
+    </section>
+    <!--ACIMA É A NAVBAR-->
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <!--
+        <div class="footer" id="foot">
+            <div class="container" style="background-color: #201414">
+                <div class="row">
+                    <div class="col-lg-1">
+                        INFORMAÇÃO
+                    </div>
+                    <div class="col-lg-1">
+                        NAVEGAÇÃO
+                    </div>
+                    <div class="col-lg-1">
+                        Contate-Nos
+                    </div>
+
+                </div>
+
+                _________________________________________________________________________________________________________________________________________________
+                <p style="font-family: FreeMono;">&copy; @DateTime.Now.Year - ALLRIGHT RESERVED - HOMCO INTERIOR</p>
+
+            </div>
+        </div>
+            -->
+        @section styles{
+            <link rel="=Stylesheet" href="@Href("~/Content/Styles_frontend/foot.css")" />
+        }
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-xs-12">
+                        <div class="first">
+                            <h4>Informação</h4>
+                            <p> Sistema e-commerce criado pela        Horizon System, utilize o link http://www.systemhorizon.com.br para suporte do sistema</p>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="second2">
+                            <a href="https://codepen.io/AndreeaBunget" target="_blank"> <i class="fab fa-codepen fa-2x margin"></i></a>
+                            <a href="https://github.com/WebDeveloperCodeRep" target="_blank"> <i class="fab fa-github fa-2x margin"></i></a>
+                            <a href="https://www.linkedin.com/in/andreea-mihaela-bunget-a4248812b/" target="_blank"> <i class="fab fa-linkedin fa-2x margin"></i></a>
+                            <a href="https://www.youtube.com/channel/UCX674BUbomzBCakbb75lhfA?view_as=subscriber" target="_blank"><i class="fab fa-youtube fa-2x margin"></i></a>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <p id="divisa">__________________________________________________________________________________________________________________________________________________</p>
+            <p style="font-family: 'Poppins', sans-serif; color: rgb(206,206,206); ">&copy; @DateTime.Now.Year - Todos os direitos reservados - HOMCO INTERIOR</p>
+
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

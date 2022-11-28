@@ -1,0 +1,70 @@
+﻿@model IEnumerable<TCC_Sistema_Cliente_Jogos_2022.Models.ItemCarrinho>
+
+@{
+    ViewBag.Title = "VerCarrinhoIndex";
+}
+
+<h2>Seu Carrinho</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdNome)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ImgCapa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QtnProd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorUnit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorTotal)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.fk_Produto_CodProd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fk_Carrinho_CodCarrinho)
+        </th>*@
+  
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+   
+        <td>
+            @Html.DisplayFor(modelItem => item.ProdNome)
+        </td>
+        <td>
+            <img src="@Url.Content(item.ImgCapa)" width="100px" height="100px" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QtnProd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValorUnit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValorTotal)
+        </td>
+        <td>
+            @Html.HiddenFor(modelItem => item.fk_Produto_CodProd)
+        </td>
+        <td>
+            @Html.HiddenFor(modelItem => item.fk_Carrinho_CodCarrinho)
+        </td>
+      
+    </tr>
+}
+
+
+<div>
+    @Html.ActionLink("Retornar ao menu inicial", "Index", "Login")
+</div>
+</table>

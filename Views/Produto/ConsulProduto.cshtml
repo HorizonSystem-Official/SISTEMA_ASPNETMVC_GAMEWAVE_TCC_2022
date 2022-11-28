@@ -1,0 +1,101 @@
+﻿@model IEnumerable<TCC_Sistema_Cliente_Jogos_2022.Models.Produto>
+
+@{
+    ViewBag.Title = "ConsulProduto";
+}
+
+@if (TempData["MensagemAviso"] != null)
+{
+    <div class="alert alert-success">
+         @TempData["MensagemAviso"]
+    </div>
+}
+
+<h2>Consulta dos Produtos</h2>
+
+<p>
+    @Html.ActionLink("Adicionar um novo Produto", "CadProduto")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CodProd)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ImgCapa)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ProdNome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdTipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdQtnEstoque)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdAnoLanc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdFaixaEtaria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdValor)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.FK_Funcionario_IdFunc)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodProd)
+            </td>
+
+            <td>
+                <img src="@Url.Content(item.ImgCapa)" width="100px" height="100px" />
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdTipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdQtnEstoque)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdDesc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdAnoLanc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdFaixaEtaria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdValor)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.FK_Funcionario_IdFunc)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "EdiProduto", new { codprod = item.CodProd }) |
+                @Html.ActionLink("Ver mais", "DetalhesProduto", new { codprod = item.CodProd }) |
+                @Html.ActionLink("Apagar", "DelProduto", new { codprod = item.CodProd, CPFCliente = User.Identity.Name })
+            </td>
+        </tr>
+    }
+
+</table>

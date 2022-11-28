@@ -1,0 +1,63 @@
+﻿@model IEnumerable<TCC_Sistema_Cliente_Jogos_2022.Models.Cliente>
+
+@{
+    ViewBag.Title = "ConsulCli";
+}
+
+@if (TempData["MensagemAviso"] != null)
+{
+    <div class="alert alert-success">
+         @TempData["MensagemAviso"]
+                     </div>
+}
+<h2>Consulta dos Clientes</h2>
+
+<p>
+    @Html.ActionLink("Adicionar um novo Cliente", "CadCliente")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataNasc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CPF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailCli)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TelCli)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataNasc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CPF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailCli)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TelCli)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "EdiCliente", new { CPF = item.CPF }) |
+                @Html.ActionLink("Apagar", "DelCliente", new { CPF = item.CPF })
+            </td>
+        </tr>
+    }
+
+</table>

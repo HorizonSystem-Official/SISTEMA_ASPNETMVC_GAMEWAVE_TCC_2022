@@ -1,0 +1,58 @@
+﻿@model IEnumerable<TCC_Sistema_Cliente_Jogos_2022.Models.Cupom>
+
+@{
+    ViewBag.Title = "ConsulCupom";
+}
+
+@if (TempData["MensagemAviso"] != null)
+{
+    <div class="alert alert-success">
+         @TempData["MensagemAviso"]
+                     </div>
+}
+
+<h2>Consulta dos Cupons</h2>
+
+<p>
+    @Html.ActionLink("Adicionar um novo Cupom", "CadCupom")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CodCupom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CupomTxt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorCupom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumLimiteCompras)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodCupom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CupomTxt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorCupom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumLimiteCompras)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "EdiCupom", new { codcupom = item.CodCupom }) |
+                @Html.ActionLink("Apagar", "DelCupom", new { codcupom = item.CodCupom })
+            </td>
+        </tr>
+    }
+
+</table>

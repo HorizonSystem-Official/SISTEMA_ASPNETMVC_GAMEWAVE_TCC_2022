@@ -1,0 +1,69 @@
+﻿@model IEnumerable<TCC_Sistema_Cliente_Jogos_2022.Models.Venda>
+
+@{
+    ViewBag.Title = "ConsulVenda";
+}
+@if (TempData["MensagemAviso"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["MensagemAviso"]
+    </div>
+}
+<h2>Consulta das Vendas</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CodVenda)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FormaPag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Parcela)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fk_Carrinho_CodCarrinho)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fk_Clinte_CPF)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodVenda)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FormaPag)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Parcela)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fk_Carrinho_CodCarrinho)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fk_Clinte_CPF)
+            </td>
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>*@
+        </tr>
+    }
+
+</table>

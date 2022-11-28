@@ -1,0 +1,111 @@
+﻿@*@model TCC_Sistema_Cliente_Jogos_2022.Models.Produto*@
+@model TCC_Sistema_Cliente_Jogos_2022.ViewModels.DetalhesProdutoEComentarios
+@{
+    ViewBag.Title = "DetalhesProduto";
+}
+
+
+
+<h2>Detalhes do Produto</h2>
+
+<div>
+    <hr />
+    <dl class="dl-vertical">
+        @Html.HiddenFor(model => model.CodProd)
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdNome)
+        </dd>
+
+        <dd>
+            <img src="@Html.DisplayFor(model => model.ImgCapa)" width="400px" height="700px" />
+        </dd>
+
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdTipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProdAnoLanc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdAnoLanc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProdDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProdFaixaEtaria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdFaixaEtaria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProdValor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdValor)
+        </dd>
+
+        <dd>
+            <a href="@Url.Action("AdicionarAOCarrinho", "Carrinho", new { codprod = Model.CodProd})">
+                Adicionar ao carrinho de compras
+            </a>
+        </dd>
+    </dl>
+</div>
+<p>
+</p>
+
+<div>
+    @Html.ActionLink("Retornar à Página Inicial", "Index", "Login")
+</div>
+
+<div>
+    @using (Html.BeginForm("CadComentario", "Comentario", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Poste aqui seu comentário</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Fk_CpfCli)
+            @Html.HiddenFor(model => model.CodProd/*, new { Value = Html.DisplayFor(model => model.CodProd)}*/)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TxtComentario, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TxtComentario, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TxtComentario, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Postar" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+
+<div>
+    <a href="@Url.Action("MostraComentarios", "Comentario", new { codprod = Model.CodProd})">
+        Ver os comentários sobre o produto  
+    </a>
+
+</div>
+

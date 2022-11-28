@@ -1,0 +1,64 @@
+﻿@model IEnumerable<TCC_Sistema_Cliente_Jogos_2022.Models.Funcionario>
+
+@{
+    ViewBag.Title = "ConsulFuncio";
+}
+
+
+@if (TempData["MensagemAviso"] != null)
+{
+    <div class="alert alert-success">
+         @TempData["MensagemAviso"]
+                     </div>
+}
+<h2>Consulta dos Funcionários</h2>
+
+<p>
+    @Html.ActionLink("Adicionar um novo Funcionário", "CadInsert")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdFunc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataNasc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CPF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cargo)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdFunc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataNasc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CPF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cargo)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "EdiFuncio", new { CPF = item.CPF }) |
+                @Html.ActionLink("Apagar", "DelFuncio", new { IdFunc = item.IdFunc })
+            </td>
+        </tr>
+    }
+
+</table>
