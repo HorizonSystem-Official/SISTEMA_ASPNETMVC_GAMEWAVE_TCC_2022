@@ -93,7 +93,7 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Models
         public Funcionario ListaUMFuncio(string CPF)
         {
             conexao.Open();
-            cmd.CommandText = "call spDadosFunc(@spCPFFunc);";
+            cmd.CommandText = "call spDadosFunc2(@spCPFFunc);";
             cmd.Parameters.Add("@spCPFFunc", MySqlDbType.VarChar).Value = CPF;
             cmd.Connection = conexao;
             var leituraFuncioCPF = cmd.ExecuteReader();
@@ -136,7 +136,7 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Models
         public string verificaFuncioCPF(string vCPF)
         {
             conexao.Open();
-            cmd.CommandText = "call spDadosFunc(@spCPFFunc);";
+            cmd.CommandText = "call spDadosFunc2(@spCPFFunc);";
             cmd.Parameters.Add("@spCPFFunc", MySqlDbType.VarChar).Value = vCPF;
             cmd.Connection = conexao;
             string CPF = (string)cmd.ExecuteScalar();

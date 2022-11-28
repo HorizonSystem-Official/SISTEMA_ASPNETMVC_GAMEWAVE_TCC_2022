@@ -1,6 +1,7 @@
 create database bdTccJogos;
 use bdTccJogos;
 
+
 CREATE TABLE tbFuncionario (
     IdFunc INT PRIMARY KEY auto_increment,
     NomeFunc Varchar(150) not null,
@@ -261,7 +262,7 @@ end $$
 
 
 delimiter $$    
-create procedure spDadosFunc(spCPFFunc varchar(20))
+create procedure spDadosFunc2(spCPFFunc varchar(20))
 begin
 	select IdFunc, NomeFunc, DataNasc, CPF, Cargo from tbFuncionario where CPF=spCPFFunc;
 end $$
