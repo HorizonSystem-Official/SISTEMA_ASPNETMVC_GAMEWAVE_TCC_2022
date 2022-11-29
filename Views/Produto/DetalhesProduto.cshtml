@@ -44,7 +44,7 @@
 
             <div class="row">
                 <h3 id="price">R$ @Html.DisplayFor(model => model.ProdValor)</h3>
-                <a href=""@Url.Action("AdicionarAOCarrinho", "Carrinho", new { codprod = Model.CodProd})" id="btnAddCar" class="btn">add car</a>
+                <a href="@Url.Action("AdicionarAOCarrinho", "Carrinho", new { codprod = Model.CodProd})" id="btnAddCar" class="btn">add car</a>
             </div>
 
         </div>

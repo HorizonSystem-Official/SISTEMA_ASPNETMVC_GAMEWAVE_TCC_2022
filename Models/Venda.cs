@@ -89,5 +89,38 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Models
 
             return tempVendLista;
         }
+
+        public List<Venda> ListarVendasPeloCPFCliente(string CPFCli)
+        {
+            //IRÁ ABRIR A CONEXÃO E UTILIZAR TODA A TABELA PARA REGISTROS E É AUTENTICADO A CONEXÃO COM O CONNECTION
+            conexao.Open();
+            cmd.CommandText = "call spPesquisaVendaCPFCliente(@spCPF)";
+            cmd.Parameters.Add("@spCPF", MySqlDbType.VarChar).Value = CPFCli; 
+            cmd.Connection = conexao;
+
+            //É INSERIDO OS REGISTROS DO BANCO PELO ExecuteReader()
+            var readVend = cmd.ExecuteReader();
+            List<Venda> tempVendLista = new List<Venda>();
+
+            //ENQUANTO TIVER REGISTRO NA readVend, irá adicionar os itens em uma lista com as variáveis abaixo do banco.
+            while (readVend.Read())
+            {
+                var tempVend = new Venda();
+                tempVend.CodVenda = Int16.Parse(readVend["CodVenda"].ToString());
+                tempVend.FormaPag = readVend["FormaPag"].ToString();
+                tempVend.Parcela = Int16.Parse(readVend["Parcela"].ToString());
+                tempVend.Total = Decimal.Parse(readVend["Total"].ToString());
+                tempVend.fk_Clinte_CPF = readVend["fk_Clinte_CPF"].ToString();
+                tempVend.fk_Carrinho_CodCarrinho = Int16.Parse(readVend["fk_Carrinho_CodCarrinho"].ToString());
+
+                tempVendLista.Add(tempVend);
+            }
+
+            //É FECHADO A LEITURA DA VARIÁVEL readVend E TAMBÉM DA CONEXÃO DO BANCO, RETORNANDO A LISTA DE DIVERSOS REGISTROS
+            readVend.Close();
+            conexao.Close();
+
+            return tempVendLista;
+        }
     }
 }

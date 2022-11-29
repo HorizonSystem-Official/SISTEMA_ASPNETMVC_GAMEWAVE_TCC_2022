@@ -88,6 +88,38 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Models
             return tempFuncLista;
         }
 
+        public List<Funcionario> ListarFuncioPeloCPF(string CPFFun)
+        {
+            //IRÁ ABRIR A CONEXÃO E UTILIZAR TODA A TABELA PARA REGISTROS E É AUTENTICADO A CONEXÃO COM O CONNECTION
+            conexao.Open();
+            cmd.CommandText = "call spPesquisaCPFFuncionario(@spCPF)";
+            cmd.Parameters.Add("@spCPF", MySqlDbType.VarChar).Value = CPFFun;
+
+            cmd.Connection = conexao;
+
+            //É INSERIDO OS REGISTROS DO BANCO PELO ExecuteReader()
+            var read = cmd.ExecuteReader();
+            List<Funcionario> tempFuncLista = new List<Funcionario>();
+
+            //ENQUANTO TIVER REGISTRO NA read, irá adicionar os itens em uma lista com as variáveis abaixo do banco.
+            while (read.Read())
+            {
+                var tempFunc = new Funcionario();
+
+                tempFunc.IdFunc = Int16.Parse(read["IdFunc"].ToString());
+                tempFunc.Nome = read["NomeFunc"].ToString();
+                tempFunc.DataNasc = DateTime.Parse(read["DataNasc"].ToString());
+                tempFunc.CPF = read["CPF"].ToString();
+                tempFunc.Cargo = read["Cargo"].ToString();
+
+                tempFuncLista.Add(tempFunc);
+            }
+            //É FECHADO A LEITURA DA VARIÁVEL read E TAMBÉM DA CONEXÃO DO BANCO, RETORNANDO A LISTA DE DIVERSOS REGISTROS
+            read.Close();
+            conexao.Close();
+
+            return tempFuncLista;
+        }
 
         //MÉTODO PARA SELECIONAR UM FUNCIONÁRIO ÚNICO PELO CPF NA URL, UTILIZANDO A MESMA ESTRUTURA DO QUE DO LISTARFUNCIO()
         public Funcionario ListaUMFuncio(string CPF)

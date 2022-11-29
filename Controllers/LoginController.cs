@@ -18,7 +18,7 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
     {
         // GET: Login
 
-        //PÁGINA "HOME" QUE VAI APRESENTAR TODOS OS PRODUTOS SEM FILTRO
+        //PÁGINA "HOME" QUE VAI APRESENTAR TODOS OS PRODUTOS SEM FILTRO PRIMEIRAMENTE
         public ActionResult Index(string spPesquia, string spProdTipo)
         {
             MySqlConnection conexao = new MySqlConnection(ConfigurationManager.ConnectionStrings["conexaobd"].ConnectionString);

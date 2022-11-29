@@ -320,6 +320,35 @@ begin
 	select CodProd, ProdNome, ProdTipo, ProdValor,ImgCapa from tbProduto where ProdNome LIKE CONCAT('%',spPesquia,'%') OR ProdTipo LIKE CONCAT('%',spPesquia,'%') OR ProdDesc LIKE CONCAT('%',spPesquia,'%');
 end $$
 
+##Pesquisa Funcionario CPF
+delimiter $$    
+create procedure spPesquisaCPFFuncionario(spCPF varchar(20))
+begin
+	select IdFunc, NomeFunc, DataNasc, CPF, Senha, Cargo from tbfuncionario where CPF LIKE CONCAT('%',spCPF,'%');
+end $$
+
+
+##Pesquisa Cupom pelo Nome
+delimiter $$
+create procedure spPesquisaNomeCupom(spNome varchar(15))
+begin
+	select CodCupom, CupomTxt, ValorCupom, NumLimiteCompras from tbcupons where CupomTxt LIKE CONCAT('%',spNome,'%');
+end $$
+
+##Pesquisa Cliente pelo CPF
+delimiter $$
+create procedure spPesquisaCPFCliente(spCPF varchar(20))
+begin
+	select CPF, NomeCliente, DataNasc, EmailCli, telCli from tbcliente where CPF LIKE CONCAT('%',spCPF,'%');
+end $$
+
+##Pesquisa Venda pelo CPF do CLIENTE
+delimiter $$
+create procedure spPesquisaVendaCPFCliente(spCPF varchar(20))
+begin
+	select CodVenda, FormaPag, Parcela, Total, fk_Carrinho_CodCarrinho, fk_Clinte_CPF from tbvenda where fk_Clinte_CPF LIKE CONCAT('%',spCPF,'%');
+end $$
+
 ##produto detalhado
 delimiter $$    
 create procedure spMostraProd(spCodProd int)

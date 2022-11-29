@@ -19,7 +19,7 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
     {
         // GET: Cliente
         //REALIZA A CONSULTA DOS CLIENTES SEM FILTRO
-        public ActionResult ConsulCli()
+        public ActionResult ConsulCli(string CPFCli)
         {
             MySqlConnection conexao = new MySqlConnection(ConfigurationManager.ConnectionStrings["conexaobd"].ConnectionString);
             try
@@ -36,6 +36,13 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
                     conexao.Close();
             }
             var clien = new Cliente();
+
+            if(CPFCli != null)
+            {
+                var MostrarClientePeloCPF = clien.ListarCliPeloCPF(CPFCli);
+
+                return View(MostrarClientePeloCPF);
+            }
 
             var MostrarClien = clien.ListarCli();
 

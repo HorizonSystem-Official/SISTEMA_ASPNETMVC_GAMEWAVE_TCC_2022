@@ -65,7 +65,7 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
         }
 
         //REALIZA A BUSCA DE TODOS OS FUNCIONÁRIOS
-        public ActionResult ConsulFuncio()
+        public ActionResult ConsulFuncio(string CPFFun)
         {
             MySqlConnection conexao = new MySqlConnection(ConfigurationManager.ConnectionStrings["conexaobd"].ConnectionString);
             try
@@ -83,6 +83,12 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
             }
             var funcio = new Funcionario();
 
+            if (CPFFun != null)
+            {
+                var MostrarFuncPeloCPF = funcio.ListarFuncioPeloCPF(CPFFun);
+
+                return View(MostrarFuncPeloCPF);
+            }
             var MostrarFuncio = funcio.ListarFuncio();
 
             return View(MostrarFuncio);

@@ -11,10 +11,10 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Models
 {
     public class Cupom
     {
-        public Cupom()
-        {
+        //public Cupom()
+        //{
 
-        }
+        //}
 
         
         [Display(Name = "Código do Cupom")]
@@ -59,6 +59,37 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Models
             //IRÁ ABRIR A CONEXÃO E UTILIZAR TODA A TABELA PARA REGISTROS E É AUTENTICADO A CONEXÃO COM O CONNECTION
             conexao.Open();
             cmd.CommandText = "select * from tbcupons;";
+            cmd.Connection = conexao;
+
+            //É INSERIDO OS REGISTROS DO BANCO PELO ExecuteReader()
+            var read = cmd.ExecuteReader();
+            List<Cupom> tempCupLista = new List<Cupom>();
+
+            //ENQUANTO TIVER REGISTRO NA read, irá adicionar os itens em uma lista com as variáveis abaixo do banco.
+            while (read.Read())
+            {
+                var tempCup = new Cupom();
+
+                tempCup.CodCupom = Int16.Parse(read["CodCupom"].ToString());
+                tempCup.CupomTxt = read["CupomTxt"].ToString();
+                tempCup.ValorCupom = Int16.Parse(read["ValorCupom"].ToString());
+                tempCup.NumLimiteCompras = Int16.Parse(read["NumLimiteCompras"].ToString());
+
+                tempCupLista.Add(tempCup);
+            }
+            //É FECHADO A LEITURA DA VARIÁVEL read E TAMBÉM DA CONEXÃO DO BANCO, RETORNANDO A LISTA DE DIVERSOS REGISTROS
+            read.Close();
+            conexao.Close();
+
+            return tempCupLista;
+        }
+
+        public List<Cupom> ListarCupPeloNome(string NomeCup)
+        {
+            //IRÁ ABRIR A CONEXÃO E UTILIZAR TODA A TABELA PARA REGISTROS E É AUTENTICADO A CONEXÃO COM O CONNECTION
+            conexao.Open();
+            cmd.CommandText = "call spPesquisaNomeCupom(@spNome)";
+            cmd.Parameters.Add("@spNome", MySqlDbType.VarChar).Value = NomeCup;
             cmd.Connection = conexao;
 
             //É INSERIDO OS REGISTROS DO BANCO PELO ExecuteReader()

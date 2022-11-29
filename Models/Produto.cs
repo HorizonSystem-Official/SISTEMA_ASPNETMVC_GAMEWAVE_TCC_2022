@@ -15,10 +15,10 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Models
 {
     public class Produto
     {
-        public Produto()
-        {
+        //public Produto()
+        //{
 
-        }
+        //}
 
         
         [Display(Name = "Código do Produto")]
@@ -133,6 +133,8 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Models
 
             return tempProdLista;
         }
+
+
 
         //SEMELHANTE AO MÉTODO DE LISTAGEM ACIMA, PORÉM IRÁ APENAS RETORAR UM PRODUTO PELO SEU PARÂMETRO ID
         public Produto ListaUMProdutoID(int codprod)
