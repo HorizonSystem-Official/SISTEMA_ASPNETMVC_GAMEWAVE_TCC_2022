@@ -19,7 +19,7 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
         // GET: Login
 
         //PÁGINA "HOME" QUE VAI APRESENTAR TODOS OS PRODUTOS SEM FILTRO
-        public ActionResult Index()
+        public ActionResult Index(string spPesquia, string spProdTipo)
         {
             MySqlConnection conexao = new MySqlConnection(ConfigurationManager.ConnectionStrings["conexaobd"].ConnectionString);
             try
@@ -38,9 +38,28 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
 
             var produ = new Produto();
 
-            var MostrarProd = produ.ListarProd();
+            //if (spPesquia == null && spProdTipo == null)
+            //{
+               
 
-            return View(MostrarProd);
+            //}
+            if (spPesquia != null && spProdTipo == null)
+            {
+                var MostrarProdPeloNome = produ.ListarProdPeloNome(spPesquia);
+
+                return View(MostrarProdPeloNome);
+            } if (spPesquia == null && spProdTipo != null)
+            {
+                var MostrarProdPeloTipo = produ.ListarProdPeloTipo(spProdTipo);
+
+                return View(MostrarProdPeloTipo);
+            }
+            else
+            {
+                var MostrarProdTodos = produ.ListarProd();
+                return View(MostrarProdTodos);
+            }
+            
         }
 
         //FORMULÁRIO PARA AUTENTICAÇÃO DO FUNCIONÁRIO
@@ -120,6 +139,13 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
         {
             Request.GetOwinContext().Authentication.SignOut("AppAplicationCookie");
             return RedirectToAction("Login", "Login");
+        }
+
+        //UMA VIEW PRESENTE NA SHARED PARA CASO OCORRER UM ERRO NA CONEXÃO COM O BANCO
+        public ActionResult Error(string mensagem)
+        {
+            ViewBag.error = "Entre em contato com um profissional TI e passe a seguinte mensagem: {" + mensagem + "}";
+            return View();
         }
     }
 }

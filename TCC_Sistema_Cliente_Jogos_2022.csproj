@@ -176,7 +176,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Image\classificacao_12_anos_.png" />
+    <Content Include="Image\classind_10.png" />
+    <Content Include="Image\classind_14.png" />
+    <Content Include="Image\classind_16.png" />
+    <Content Include="Image\classind_18.png" />
+    <Content Include="Image\classind_l.png" />
     <Content Include="Image\Icone.ico" />
+    <Content Include="Image\logogameswave.png" />
+    <Content Include="Image\log_out.png" />
     <Content Include="Scripts\BdTCC_updt %28ASP%29.sql" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

@@ -13,6 +13,22 @@
 
 <h2>Página Inicial</h2>
 
+@using (Html.BeginForm("Index", "Login", FormMethod.Get))
+{
+    <div class="buscaGeral">
+        <input id="spPesquia" name="spPesquia" placeholder="Procure um game" />
+        <button type="submit">Buscar</button>
+    </div>
+}
+
+@using (Html.BeginForm("Index", "Login", FormMethod.Get))
+            {
+<div class="buscaGeral">
+    <input id="spProdTipo" name="spProdTipo" placeholder="Procure um tipo de game" />
+    <button type="submit">Buscar</button>
+</div>
+            }
+
 
 @foreach (var item in Model)
 {
