@@ -5,72 +5,52 @@
 }
 
 
+<div class="container aling-center">
+    <div class="row">
+        <div class="col-sm-6">
+            <img src="@Html.DisplayFor(model => model.ImgCapa)" width="100%" height="100%" />
+        </div>
+        <div class="col-sm-6" id="boxDesc">
+            <div class="p-2">
+                <h1 id="title"> @Html.DisplayFor(model => model.ProdNome)</h1>
+            </div>
+            <div class="p-2 mt-2">
+                <h3 id="subTitle">Categoria</h3>
+                <h6 id="textProd">@Html.DisplayFor(model => model.ProdTipo)</h6>
+            </div>
 
-<h2>Detalhes do Produto</h2>
+            <div class="p-2">
+                <i class="fas fa-star red fa-fw"></i>
+                <i class="fas fa-star red fa-fw"></i>
+                <i class="fas fa-star red fa-fw"></i>
+                <i class="fas fa-star-half red"></i>
+                <i class="fas fa-star o-20"></i>
+            </div>
 
-<div>
-    <hr />
-    <dl class="dl-vertical">
-        @Html.HiddenFor(model => model.CodProd)
+            <div class="p-2 mt-2">
+                <h3 id="subTitle">Ano de Lançamento</h3>
+                <h6 id="textProd">@Html.DisplayFor(model => model.ProdAnoLanc)</h6>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProdNome)
-        </dd>
+            <div class="p-2 mt-2">
+                <h3 id="subTitle">Faixa Etária </h3>
+                <h6 id="textProd"> @Html.DisplayFor(model => model.ProdFaixaEtaria)</h6>
+            </div>
 
-        <dd>
-            <img src="@Html.DisplayFor(model => model.ImgCapa)" width="400px" height="700px" />
-        </dd>
+            <div class="p-2 mt-3">
+                <h3 id="subTitle">Descrição </h3>
+                <h6 id="textProd"> @Html.DisplayFor(model => model.ProdDesc)</h6>
+            </div>
 
+            <div class="row">
+                <h3 id="price">R$ @Html.DisplayFor(model => model.ProdValor)</h3>
+                <a href=""@Url.Action("AdicionarAOCarrinho", "Carrinho", new { codprod = Model.CodProd})" id="btnAddCar" class="btn">add car</a>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProdTipo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ProdAnoLanc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProdAnoLanc)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ProdDesc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProdDesc)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ProdFaixaEtaria)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProdFaixaEtaria)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ProdValor)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProdValor)
-        </dd>
-
-        <dd>
-            <a href="@Url.Action("AdicionarAOCarrinho", "Carrinho", new { codprod = Model.CodProd})">
-                Adicionar ao carrinho de compras
-            </a>
-        </dd>
-    </dl>
+        </div>
+    </div>
 </div>
-<p>
-</p>
 
-<div>
-    @Html.ActionLink("Retornar à Página Inicial", "Index", "Login")
-</div>
 
 <div>
     @using (Html.BeginForm("CadComentario", "Comentario", FormMethod.Post))

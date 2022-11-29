@@ -1,30 +1,175 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+:root {
+    --roxo: #9C079F;
+    --roxoEscuro: #3D003D;
+    --black: #161616;
+    --gray: #000;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+* {
+    font-family: 'Poppins', sans-serif;
+    user-select: none;
+    padding: 0;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+/*navbar*/
+#navBar {
+    background-color: var(--roxoEscuro);
+    padding:0;
+    margin:0:
+}
+#navBarItem {
+    margin-left: 20%;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+#logo {
+    width: 40%;
+    margin: 20px;
 }
 
-.navbar-inverse .navbar-toggle:hover,
-.navbar-inverse .navbar-toggle:focus {
-    background-color: #777;
-    border-color: #fff
+#imgMenu {
+    width: 10%;
+}
+
+#imgHeader {
+    width: 30px;
+    margin-right: 20px;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: #222;
+}
+
+    .navbar-nav .nav-item .nav-link:hover {
+        color: var(--roxo);
+    }
+
+.container {
+    margin-top: 5%;
+}
+
+.img-thumbnail {
+    width: 90%;
+    margin-left: 5%;
+    border: none;
+}
+
+
+/* Detalhes do prod*/
+#boxDesc {
+    padding-left: 10%;
+    
+}
+
+#title {
+    color: var(--black);
+    text-transform: uppercase;
+    margin: 5% 5% 2% 0%;
+    font-weight: bold;
+}
+
+#subTitle {
+    color: #000;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+#textProd {
+    font-weight: bold;
+    color: var(--gray);
+    font-size: 1.5rem;
+}
+
+#price {
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 5% 10% 2% 5%;
+}
+
+#btnAddCar {
+    width:80%;
+    background-color: var(--roxo);
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 50px;
+    text-transform: uppercase;
+    margin: 3% 10%;
+}
+
+/*Footer*/
+.site-footer {
+    width: 100%;
+    background-color: #26272b;
+    padding: 45px 0 20px;
+    font-size: 15px;
+    line-height: 24px;
+    color: #737373;
+    font-weight: bold;
+}
+
+    .site-footer hr {
+        border-top-color: #bbb;
+        opacity: 0.5
+    }
+
+        .site-footer hr.small {
+            margin: 20px 0
+        }
+
+    .site-footer h6 {
+        color: #fff;
+        font-size: 16px;
+        text-transform: uppercase;
+        margin-top: 5px;
+        letter-spacing: 2px
+    }
+
+    .site-footer a {
+        color: #737373;
+    }
+
+        .site-footer a:hover {
+            color: var(--roxo);
+            text-decoration: none;
+        }
+
+.footer-links {
+    padding-left: 0;
+    list-style: none
+}
+
+    .footer-links li {
+        display: block
+    }
+
+    .footer-links a {
+        color: #737373
+    }
+
+        .footer-links a:active, .footer-links a:focus, .footer-links a:hover {
+            color: #3366cc;
+            text-decoration: none;
+        }
+
+    .footer-links.inline li {
+        display: inline-block
+    }
+
+.copyright-text {
+    margin: 0
+}
+
+@media (max-width:991px) {
+    .site-footer [class^=col-] {
+        margin-bottom: 30px
+    }
+}
+
+@media (max-width:767px) {
+    .site-footer {
+        padding-bottom: 0
+    }
+
 }

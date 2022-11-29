@@ -7,49 +7,30 @@
     <title>@ViewBag.Title - Meu Aplicativo ASP.NET</title>
     <link rel="shortcut icon" type="image/x-icon" href="~/Image/Icone.ico" />
 
-    <link href="@Url.Content("~/Content/Styles_frontend/foot.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/Styles_frontend/navbar.css")" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="@Url.Content("~/Content/Scripts_frontend/foot.js")"></script>
-    @RenderSection("Styles", false)
-    @RenderSection("JavaScript", required: false)
-
-
 
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+
     <!--ABAIXO É A NAVBAR-->
-    
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+    <div class="navbar navbar-expand-lg navbar-dark" id="navBar">
+        <div class="containerHeader">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="mais opções">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <a class="navbar-brand" href="@Url.Action("Index", "Login")">
+                    <img src="~/Image/Icone.ico" alt="logo" id="logo">
+                </a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li></li>
+                   
 
-                </ul>
-            </div>
-        </div>
-    </div>
-
-   
-
-    <section class="navigation">
-        <div class="nav-container">
-            <div class="brand">
-                @Html.ActionLink("Página Inicial", "Index", "Login")
-            </div>
-            <nav>
-                <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
-                <ul class="nav-list">
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li>
@@ -63,8 +44,9 @@
                             @Html.ActionLink("Consultar Produtos", "ConsulProduto", "Produto")
                         </li>
 
-                        <li>
-                            @Html.ActionLink("Ver Carrinho", "VerCarrinhoIndex", "Carrinho")
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Html.ActionLink(" ", "VerCarrinhoIndex", "Carrinho")"><img id="imgHeader" src="http://cdn.onlinewebfonts.com/svg/img_324664.png" alt="Carrinho"></a>
                         </li>
 
                         <li>
@@ -90,82 +72,77 @@
                     }
                     else
                     {
-                        <li>
-                            @Html.ActionLink("Consultar Funcionarios", "ConsulFuncio", "Funcionario")
-                        </li>
-                        <li>
-                            @Html.ActionLink("Fazer Login", "Login", "Login")
-                        </li>
+                               
+                        <div class="navbar navbar-right">
+                            <ul class="nav navbar-nav ">
+                                <li>
+                                    <input name="pesquisa" id="pesq" placeholder="Pesquisar..." class="form-control" type="text">
+                                    <div id="BtnPesq" class="btn"> lupa</div>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="@Url.Action("Login", "Login")"><img id="imgHeader" src="https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png" alt="user"></a>
+                                </li>
+
+                            </ul>
+                        </div>
                     }
 
-
-
-
                 </ul>
-            </nav>
+
+            </div>
         </div>
-    </section>
+    </div>
     <!--ACIMA É A NAVBAR-->
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <!--
-        <div class="footer" id="foot">
-            <div class="container" style="background-color: #201414">
-                <div class="row">
-                    <div class="col-lg-1">
-                        INFORMAÇÃO
-                    </div>
-                    <div class="col-lg-1">
-                        NAVEGAÇÃO
-                    </div>
-                    <div class="col-lg-1">
-                        Contate-Nos
-                    </div>
-
-                </div>
-
-                _________________________________________________________________________________________________________________________________________________
-                <p style="font-family: FreeMono;">&copy; @DateTime.Now.Year - ALLRIGHT RESERVED - HOMCO INTERIOR</p>
-
-            </div>
-        </div>
-            -->
-        @section styles{
-            <link rel="=Stylesheet" href="@Href("~/Content/Styles_frontend/foot.css")" />
-        }
-        <div class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 col-xs-12">
-                        <div class="first">
-                            <h4>Informação</h4>
-                            <p> Sistema e-commerce criado pela        Horizon System, utilize o link http://www.systemhorizon.com.br para suporte do sistema</p>
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="second2">
-                            <a href="https://codepen.io/AndreeaBunget" target="_blank"> <i class="fab fa-codepen fa-2x margin"></i></a>
-                            <a href="https://github.com/WebDeveloperCodeRep" target="_blank"> <i class="fab fa-github fa-2x margin"></i></a>
-                            <a href="https://www.linkedin.com/in/andreea-mihaela-bunget-a4248812b/" target="_blank"> <i class="fab fa-linkedin fa-2x margin"></i></a>
-                            <a href="https://www.youtube.com/channel/UCX674BUbomzBCakbb75lhfA?view_as=subscriber" target="_blank"><i class="fab fa-youtube fa-2x margin"></i></a>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <p id="divisa">__________________________________________________________________________________________________________________________________________________</p>
-            <p style="font-family: 'Poppins', sans-serif; color: rgb(206,206,206); ">&copy; @DateTime.Now.Year - Todos os direitos reservados - HOMCO INTERIOR</p>
-
-        </div>
     </div>
+       
+   
+        <!-- Site footer -->
+        <footer class="site-footer">
+            <div class="containerFooter">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <h6>Nossa empresa</h6>
+                        <p class="text-justify">Fundada em 2022, aspiramos dar uma melhor interface e experiencia para nossos amados clientes.  </p>
+                    </div>
+
+                    <div class="col-xs-6 col-md-3">
+                        <h6>Categorias</h6>
+                        <ul class="footer-links">
+                            <li><a href="http://scanfcode.com/category/c-language/">Home</a></li>
+                            <li><a href="http://scanfcode.com/category/front-end-development/">Sobre</a></li>
+                            <li><a href="http://scanfcode.com/category/back-end-development/">Login</a></li>
+                            <li><a href="http://scanfcode.com/category/java-programming-language/">Contato</a></li>
+                            <li><a href="http://scanfcode.com/category/android/">Categorias</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-xs-6 col-md-3">
+                        <h6>Entre em contato</h6>
+                        <ul class="footer-links">
+                            <li><a href="http://scanfcode.com/about/">Rua Ausgusta, 69, São Paulo</a></li>
+                            <li><a href="http://scanfcode.com/contact/"> game.wave@gmail.com </a></li>
+                            <li><a href="http://scanfcode.com/contribute-at-scanfcode/">(11) 968425-7725</a></li>
+                            <li><a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a></li>             
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div class="containerFooter">
+                <div class="row">
+                    <div class="col-md-8 col-sm-6 col-xs-12">
+                        <p class="copyright-text">
+                            Copyright &copy;  @DateTime.Now.Year All Rights Reserved by
+                            <a href="#">DEVELOPED BY HORIZON SYSTEMS LTDA.</a>.
+                        </p>
+                    </div>               
+                </div>
+            </div>
+        </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

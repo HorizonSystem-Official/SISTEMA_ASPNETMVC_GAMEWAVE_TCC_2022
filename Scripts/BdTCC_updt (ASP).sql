@@ -1,6 +1,5 @@
-create database bdTccJogos;
-use bdTccJogos;
-
+create database bdTccJogosASP;
+use bdTccJogosASP;
 
 CREATE TABLE tbFuncionario (
     IdFunc INT PRIMARY KEY auto_increment,
@@ -16,7 +15,7 @@ CREATE TABLE tbProduto (
     ProdNome Varchar(150) not null unique,
     ProdTipo Varchar(50) not null,
     ProdQtnEstoque INT not null,
-    ProdDesc Varchar(1000) not null,
+    ProdDesc text not null,
     ProdAnoLanc Varchar(4) not null,
     ProdFaixaEtaria Varchar(50) not null,
     ProdValor decimal(15,2) not null,
@@ -457,6 +456,7 @@ create view vm_Comentarios as
     inner join tbproduto on tbproduto.CodProd = tbcomentarios.Fk_CodProd;
 
 delimiter $$
+
 create procedure spVerComentarios(spCodProd int)
 begin
 	select * from vm_Comentarios where CodProd = spCodProd;
