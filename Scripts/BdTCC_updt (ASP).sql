@@ -12,7 +12,7 @@ CREATE TABLE tbFuncionario (
 
 CREATE TABLE tbProduto (
     CodProd INT PRIMARY KEY auto_increment,
-    ProdNome Varchar(150) not null unique,
+    ProdNome Varchar(150) not null,
     ProdTipo Varchar(50) not null,
     ProdQtnEstoque INT not null,
     ProdDesc text not null,
@@ -22,6 +22,8 @@ CREATE TABLE tbProduto (
     ImgCapa varchar(500) not null,
     fk_Funcionario_IdFunc INT
 );
+
+
 
 create table tbImagem (
 	CodImg INT primary key auto_increment,
@@ -150,7 +152,7 @@ end $$
 
 ##AddProduto
 delimiter $$    
-create procedure spInsertProduto(spProdNome varchar(150), spTipoProd varchar(50), spQtnEstoqueProd int, spDescProd varchar(250), spAnoLancProd varchar(4), spFaixaEtaraia varchar(50),
+create procedure spInsertProduto(spProdNome varchar(150), spTipoProd varchar(50), spQtnEstoqueProd int, spDescProd text, spAnoLancProd varchar(4), spFaixaEtaraia varchar(50),
 spProdValor decimal(15,2), spImgCapa varchar(500),FkIdFunc int)
 begin
 	insert into tbProduto(ProdNome , ProdTipo , ProdQtnEstoque, ProdDesc , ProdAnoLanc , ProdFaixaEtaria , ProdValor, ImgCapa,fk_Funcionario_IdFunc) 
@@ -365,7 +367,7 @@ begin
 end $$
 
 delimiter $$
-create procedure spUpdateProd2 (spCodProd int ,spnome varchar(150), sptipo varchar(150), spquantidade int, spdesc varchar(750), spano Varchar(4), spfaixa varchar(50), spvalor decimal(15,2), spimagem varchar(500))
+create procedure spUpdateProd2 (spCodProd int ,spnome varchar(150), sptipo varchar(150), spquantidade int, spdesc text, spano Varchar(4), spfaixa varchar(50), spvalor decimal(15,2), spimagem varchar(500))
 begin
 	update tbProduto 
 		set ProdNome = spnome, ProdTipo = sptipo, ProdQtnEstoque = spquantidade, ProdDesc = spdesc, ProdAnoLanc = spano, ProdFaixaEtaria = spfaixa, ProdValor = spvalor, ImgCapa = spimagem
@@ -380,7 +382,6 @@ begin
         where CPF = spCPF;
 end $$
 
-delimiter $$
 delimiter $$
 create procedure spUpdateCupom (spIDCup int, sptxt varchar(15), spvalor int, splimite int)
 begin
