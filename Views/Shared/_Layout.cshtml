@@ -11,88 +11,7 @@
 </head>
 <body>
 
-    <!--ABAIXO É A NAVBAR
-    <div class="navbar navbar-expand-lg" id="navBar">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <div class="navbar-brand">
-                    <a href="@Url.Action("Index", "Login")"><img src="~/Image/logogameswave.png" alt="logo"></a>
-                </div>
-            </div>
-
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <li>
-                            @Html.ActionLink("Consultar Funcionarios", "ConsulFuncio", "Funcionario")
-                        </li>
-                        <li>
-                            @Html.ActionLink("Consultar Clientes", "ConsulCli", "Cliente")
-                        </li>
-
-                        <li>
-                            @Html.ActionLink("Consultar Produtos", "ConsulProduto", "Produto")
-                        </li>
-
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Html.ActionLink(" ", "VerCarrinhoIndex", "Carrinho")"><img id="imgHeader" src="http://cdn.onlinewebfonts.com/svg/img_324664.png" alt="Carrinho"></a>
-                        </li>
-
-                        <li>
-                            @Html.ActionLink("Fazer Venda", "FazerVenda", "Carrinho")
-                        </li>
-
-                        <li>
-                            @Html.ActionLink("Consultar Vendas", "ConsulVenda", "Carrinho")
-                        </li>
-
-                        <li>
-                            @Html.ActionLink("Consultar Cupons", "ConsulCupom", "Cupom")
-                        </li>
-
-                        <li>
-
-                            <ul class="nav-dropdown">
-                                <li>
-                                    @Html.ActionLink("Sair", "Logout", "Login")
-                                </li>
-                            </ul>
-                        </li>
-                    }
-                    else
-                    {
-
-                        <div class="navbar navbar-right">
-                            <ul class="nav navbar-nav ">
-                                <form class="navbar-form navbar-left" action="/action_page.php">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Search">
-                                    </div>
-                                    <button type="submit" class="btn btn-default">Submit</button>
-                                </form>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" href="@Url.Action("Login", "Login")"><img id="imgHeader" src="https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png" alt="user"></a>
-                                </li>
-
-                            </ul>
-                        </div>
-                    }
-
-                </ul>
-
-            </div>
-        </div>
-    </div>-->
-
+    <!--ABAIXO É A NAVBAR-->
     <nav class="navbar navbar-inverse" id="navBar">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".container-fluid" title="more options">
@@ -110,19 +29,28 @@
                 <li><a href="#">Promoções</a></li>
                 <li><a href="#">Novos</a></li>
                 <li><a href="#">Lançamentos</a></li>
+                
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <form class="navbar-form navbar-left" id="formPesquisa" action="/action_page.php">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Pesquise...">
-                        <div class="input-group-btn">
-                            <button class="btn btn-default" type="submit">
-                                <i class="glyphicon glyphicon-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
+                <!--Barra de pesquisa-->
+                <div class="navbar-form navbar-left" id="formPesquisa">
+                    @using (Html.BeginForm("ConsulProduto", "Produto", FormMethod.Get))
+                    {
+                        <form>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="spPesquia" name="spPesquia" placeholder="Pesquise..." />
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" type="submit">
+                                        <i class="glyphicon glyphicon-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    }
+                </div>
+
+
                 @if (User.Identity.IsAuthenticated)
                 {
                     <li><a href="#"><span class="glyphicon glyphicon-log-in"></span></a></li>
@@ -130,7 +58,8 @@
                 }
                 else
                 {
-                    <li><a class="nav-link" href="@Url.Action("Login", "Login")"><img id="imgHeader" src="https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png" alt="user"></a></li>      
+                    <li><a class="nav-link" href="@Url.Action("Login", "Login")"><img id="imgHeader" src="https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png" alt="user"></a></li>
+
                 }
             </ul>
         </div>
@@ -138,7 +67,6 @@
     <!--ACIMA É A NAVBAR-->
     <div class="container body-content">
         @RenderBody()
-        <hr />
     </div>
 
 

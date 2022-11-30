@@ -5,42 +5,58 @@
 }
 
 <style>
-    #clasEtaria{
-        width:64px;
-        height:64px;
+    #clasEtaria {
+        width: 34px;
+        height: 34px;
     }
 </style>
 
-<div class="container aling-center">
+<div class="container aling-center" id="boxProd">
     <div class="row">
         <div class="col-sm-6">
-            <img src="@Html.DisplayFor(model => model.ImgCapa)" width="100%" height="100%" />
+            <img src="@Html.DisplayFor(model => model.ImgCapa)" width="90%" height="90%" />
         </div>
         <div class="col-sm-6" id="boxDesc">
             <div class="p-2">
                 <h1 id="title"> @Html.DisplayFor(model => model.ProdNome)</h1>
             </div>
             <div class="p-2 mt-2">
-                <h3 id="subTitle">Categoria</h3>
                 <h6 id="textProd">@Html.DisplayFor(model => model.ProdTipo)</h6>
             </div>
 
-            <div class="p-2">
-                <i class="fas fa-star red fa-fw"></i>
-                <i class="fas fa-star red fa-fw"></i>
-                <i class="fas fa-star red fa-fw"></i>
-                <i class="fas fa-star-half red"></i>
-                <i class="fas fa-star o-20"></i>
+            <div class="p-2 mt-2">
+                <h6 id="textProd">Ano de Lançamento: @Html.DisplayFor(model => model.ProdAnoLanc)</h6>
             </div>
 
             <div class="p-2 mt-2">
-                <h3 id="subTitle">Ano de Lançamento</h3>
-                <h6 id="textProd">@Html.DisplayFor(model => model.ProdAnoLanc)</h6>
-            </div>
+                @{
+                    string faixa = Model.ProdFaixaEtaria.ToString();
+                    switch (faixa)
+                    {
+                        case "+10":
+                            <img src="~/Image/classind_10.png" id="clasEtaria" />
+                            break;
 
-            <div class="p-2 mt-2">
-                <h3 id="subTitle">Faixa Etária </h3>
-                <h6 id="textProd"> @Html.DisplayFor(model => model.ProdFaixaEtaria)</h6>
+                        case "+12":
+                            <img src="~/Image/classificacao_12_anos_.png" id="clasEtaria"  />
+                            break;
+
+                        case "+14":
+                            <img src="~/Image/classind_14.png"  id="clasEtaria" />
+                            break;
+                        case "+16":
+                            <img src="~/Image/classind_16.png" id="clasEtaria" />
+                            break;
+
+                        case "+18":
+                            <img src="~/Image/classind_18.png" id="clasEtaria" />
+                            break;
+
+                        default:
+                            <img src="~/Image/classind_l.png" id="clasEtaria"/>
+                            break;
+                    }
+                }
             </div>
 
             <div class="p-2 mt-3">

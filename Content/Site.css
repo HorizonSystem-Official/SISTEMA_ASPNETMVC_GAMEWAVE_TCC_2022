@@ -1,4 +1,5 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Oswald:700|Roboto');
 
 :root {
     --roxo: #9C079F;
@@ -46,11 +47,51 @@
         color: var(--roxo);
     }
 
+/*Home*/
+.body-content {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
 
+#boxAuxHome {
+    font-size: 14px;
+    background-color: #EDA0C5;
+    color: var(--roxo);
+    font-weight: bold;
+    padding:2%;
+    margin-top:-15%;
+}
+
+#textoBomAuxHome {
+    font-size: 14px;
+}
+
+#TodaHome {
+    background-color: var(--roxoEscuro);
+}
+
+#espaco {
+    width:80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#imgMarcas {
+    width: 60%;
+    margin: 3% 20%;
+}
+
+.col-sm-4 {
+    margin: 1px;
+}
 /* Detalhes do prod*/
+#boxProd {
+    margin-top: 5%;
+}
+
 #boxDesc {
-    padding-left: 10%;
-    
+    padding-left: 2%;
 }
 
 #title {
@@ -58,12 +99,7 @@
     text-transform: uppercase;
     margin: 5% 5% 2% 0%;
     font-weight: bold;
-}
-
-#subTitle {
-    color: #000;
-    font-weight: bold;
-    font-size: 2rem;
+    font-family:'Roboto', sans-serif;
 }
 
 #textProd {
@@ -82,6 +118,7 @@
     width:80%;
     background-color: var(--roxo);
     color: #fff;
+    border-color:var(--roxo);
     border-radius: 5px;
     padding: 10px 50px;
     text-transform: uppercase;
@@ -135,6 +172,14 @@
     height: 8vh;
     font-size: 18px;
 }
+
+.thumb-post img {
+    width: 100px;
+    height: 100px;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
 /*Footer*/
 .site-footer {
     width: 100%;

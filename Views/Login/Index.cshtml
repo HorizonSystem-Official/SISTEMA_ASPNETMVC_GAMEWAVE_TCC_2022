@@ -3,55 +3,82 @@
 @{
     ViewBag.Title = "Index";
 }
+<div id="TodaHome">
 
-@if (TempData["MensagemAviso"] != null)
-{
-    <div class="alert alert-success">
-        @TempData["MensagemAviso"]
-    </div>
-}
 
-<h2>Página Inicial</h2>
+    @if (TempData["MensagemAviso"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["MensagemAviso"]
+        </div>
+    }
 
-@using (Html.BeginForm("Index", "Login", FormMethod.Get))
-{
-    <div class="buscaGeral">
-        <input id="spPesquia" name="spPesquia" placeholder="Procure um game" />
-        <button type="submit">Buscar</button>
-    </div>
-}
+    <img src="~/Image/BEM-VINDO À LOJA GAME WAVE!.png" width="100%" height="100%" />
 
-@using (Html.BeginForm("Index", "Login", FormMethod.Get))
+    <div class="container aling-center">
+        <div class="row">
+            <div class="col-sm-3">
+                <h3 class="group inner list-group-item-heading">
+                    Novidades
+                </h3>
+
+                <p class="lead" id="textoBomAuxHome">
+                    Confira os lançamentos mais recentes aqui na GAME WAVE.
+                </p>
+
+                <div class="row">
+                    <div class="col-xs-12 col-md-4"> -></div>
+                </div>
+            </div>
+
+            <div class="col-sm-3" style="background-color: #3D003D">
+                <h3 class="group inner list-group-item-heading">
+                    Novidades
+                </h3>
+
+                <p class="lead" id="textoBomAuxHome" style="color: #ccc">
+                    Confira os lançamentos mais recentes aqui na GAME WAVE.
+                </p>
+
+                <div class="row">
+                    <div class="col-xs-12 col-md-4"> -></div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <h3 class="group inner list-group-item-heading">
+                    Novidades
+                </h3>
+
+                <p class="lead" id="textoBomAuxHome">
+                    Confira os lançamentos mais recentes aqui na GAME WAVE.
+                </p>
+
+                <div class="row">
+                    <div class="col-xs-12 col-md-4"> -></div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+            @foreach (var item in Model)
             {
-<div class="buscaGeral">
-    <input id="spProdTipo" name="spProdTipo" placeholder="Procure um tipo de game" />
-    <button type="submit">Buscar</button>
-</div>
+                <tr>
+                    <td>
+                        @Html.HiddenFor(modelItem => item.CodProd) <br />
+                    </td>
+                    <td>
+                        <a href="@Url.Action("DetalhesProduto", "Produto", new { codprod = item.CodProd})">
+                            <img src="@Url.Content(item.ImgCapa)" width="100px" height="100px" />
+                        </a>
+                    </td>
+                </tr>
             }
 
+            <img src="~/Image/THE SIMS 4 GRATUITO!.png" id="espaco" />
 
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.HiddenFor(modelItem => item.CodProd) <br />
-        </td>
+            <img src="~/Image/BENDY AND THE DARK REVIVAL.jpg" id="espaco" />
 
-        <td>
-            <img src="@Url.Content(item.ImgCapa)" width="100px" height="100px" /><br />
-        </td>
-
-        <td>
-            @Html.DisplayFor(modelItem => item.ProdNome) <br />
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProdValor)<br />
-        </td>
-        <td>
-            @*@Html.ActionLink("Ver mais (Botão na hora de ver mais)", "DetalhesProduto", "Produto", new { codprod = item.CodProd }) <br />*@
-            <a href="@Url.Action("DetalhesProduto", "Produto", new { codprod = item.CodProd})">
-                Ver mais
-            </a>
-        </td>
-    </tr>
-}
+            <img src="~/Image/logoMarcasGames.png" id="imgMarcas" />
+        </div>
