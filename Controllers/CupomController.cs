@@ -13,9 +13,18 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
         // GET: Cupom
 
         //FAZ A CONSULTA DE CUPONS SEM FILTRO
-        public ActionResult ConsulCupom()
+        public ActionResult ConsulCupom(string NomeCup)
         {
+
+
             var cup = new Cupom();
+
+            if (NomeCup != null)
+            {
+                var MostrarCupomPeloNome = cup.ListarCupPeloNome(NomeCup);
+
+                return View(MostrarCupomPeloNome);
+            }
 
             var MostrarCupom = cup.ListarCup();
 

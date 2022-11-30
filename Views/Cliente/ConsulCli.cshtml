@@ -7,10 +7,18 @@
 @if (TempData["MensagemAviso"] != null)
 {
     <div class="alert alert-success">
-         @TempData["MensagemAviso"]
-                     </div>
+        @TempData["MensagemAviso"]
+    </div>
 }
 <h2>Consulta dos Clientes</h2>
+@using (Html.BeginForm("ConsulCli", "Cliente", FormMethod.Get))
+{
+    <div class="buscaCPFCli">
+        <input id="CPFCli" name="CPFCli" placeholder="Procure pelo CPF" />
+        <button type="submit">Buscar</button>
+    </div>
+}
+
 
 <p>
     @Html.ActionLink("Adicionar um novo Cliente", "CadCliente")

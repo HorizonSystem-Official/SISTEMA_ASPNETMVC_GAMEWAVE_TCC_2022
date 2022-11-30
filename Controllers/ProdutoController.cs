@@ -19,7 +19,7 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
     {
         // GET: Produto
         //REALIZA A BUSCA DE TODOS OS PRODUTOS
-        public ActionResult ConsulProduto()
+        public ActionResult ConsulProduto(string spPesquia, string spProdTipo )
         {
             //Try e Catch utilizado para tratar erros relacionados a conexão do bd
             MySqlConnection conexao = new MySqlConnection(ConfigurationManager.ConnectionStrings["conexaobd"].ConnectionString);
@@ -39,10 +39,28 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
 
             var produ = new Produto();
 
-            //UTILIZA UM MÉTODO GERAL PARA RETORNAR UMA LISTA GERAL
-            var MostrarProd = produ.ListarProd();
+            if (spPesquia != null && spProdTipo == null)
+            {
+                var MostrarProdPeloNome = produ.ListarProdPeloNome(spPesquia);
 
-            return View(MostrarProd);
+                return View(MostrarProdPeloNome);
+            }
+            if (spPesquia == null && spProdTipo != null)
+            {
+                var MostrarProdPeloTipo = produ.ListarProdPeloTipo(spProdTipo);
+
+                return View(MostrarProdPeloTipo);
+            }
+            else
+            {
+                var MostrarProdTodos = produ.ListarProd();
+                return View(MostrarProdTodos);
+            }
+
+            //UTILIZA UM MÉTODO GERAL PARA RETORNAR UMA LISTA GERAL
+            //var MostrarProd = produ.ListarProd();
+
+            //return View(MostrarProd);
         }
 
 

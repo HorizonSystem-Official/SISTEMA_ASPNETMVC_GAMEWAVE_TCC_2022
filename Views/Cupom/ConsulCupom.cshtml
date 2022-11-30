@@ -7,11 +7,18 @@
 @if (TempData["MensagemAviso"] != null)
 {
     <div class="alert alert-success">
-         @TempData["MensagemAviso"]
-                     </div>
+        @TempData["MensagemAviso"]
+    </div>
 }
 
 <h2>Consulta dos Cupons</h2>
+@using (Html.BeginForm("ConsulCupom", "Cupom", FormMethod.Get))
+{
+    <div class="buscaNomeCup">
+        <input id="NomeCup" name="NomeCup" placeholder="Procure pelo Nome" />
+        <button type="submit">Buscar</button>
+    </div>
+}
 
 <p>
     @Html.ActionLink("Adicionar um novo Cupom", "CadCupom")

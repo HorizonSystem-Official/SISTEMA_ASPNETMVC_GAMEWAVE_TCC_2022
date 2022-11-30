@@ -7,11 +7,27 @@
 @if (TempData["MensagemAviso"] != null)
 {
     <div class="alert alert-success">
-         @TempData["MensagemAviso"]
+        @TempData["MensagemAviso"]
     </div>
 }
 
 <h2>Consulte nossos produtos</h2>
+@using (Html.BeginForm("ConsulProduto", "Produto", FormMethod.Get))
+{
+    <div class="buscaGeral">
+        <input id="spPesquia" name="spPesquia" placeholder="Procure um game" />
+        <button type="submit">Buscar</button>
+    </div>
+}
+
+@using (Html.BeginForm("ConsulProduto", "Produto", FormMethod.Get))
+{
+    <div class="buscaGeral">
+        <input id="spProdTipo" name="spProdTipo" placeholder="Procure um tipo de game" />
+        <button type="submit">Buscar</button>
+    </div>
+}
+
 
 <p>
     @Html.ActionLink("Adicionar um novo Produto", "CadProduto")
@@ -43,7 +59,7 @@
                 @Html.ActionLink("Ver mais", "DetalhesProduto", new { codprod = item.CodProd }) |
                 @Html.ActionLink("Apagar", "DelProduto", new { codprod = item.CodProd, CPFCliente = User.Identity.Name })
             </td>
-            
+
         </tr>
     }
 

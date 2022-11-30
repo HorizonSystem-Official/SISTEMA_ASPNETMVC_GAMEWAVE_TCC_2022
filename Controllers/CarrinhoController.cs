@@ -15,16 +15,16 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
     {
         // GET: Carrinho
         //VIEW DE TESTE
-        public ActionResult FazerCarrinho()
-        {
-            return View();
-        }
+        //public ActionResult FazerCarrinho()
+        //{
+        //    return View();
+        //}
 
         //VIEW DE TESTE
-        public ActionResult ColocarItemCarrinho()
-        {
-            return View();
-        }
+        //public ActionResult ColocarItemCarrinho()
+        //{
+        //    return View();
+        //}
 
         //É SELECIONADO UM CARRINHO DO CLIENTE CADASTRADO E TENHA FEITO O LOGIN COM SEU CPF
         public ActionResult VerCarrinhoIndex(string CPF)
@@ -103,7 +103,7 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
         }
 
         //MÉTODO COM VIEW PARA VISUALIZAR A CONSULTA DE VENDAS SEM FILTRO
-        public ActionResult ConsulVenda()
+        public ActionResult ConsulVenda(string CPFCli)
         {
             MySqlConnection conexao = new MySqlConnection(ConfigurationManager.ConnectionStrings["conexaobd"].ConnectionString);
             try
@@ -120,6 +120,13 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
                     conexao.Close();
             }
             var ven = new Venda();
+
+            if (CPFCli != null)
+            {
+                var MostrarVendaPeloCPF = ven.ListarVendasPeloCPFCliente(CPFCli);
+
+                return View(MostrarVendaPeloCPF);
+            }
 
             var MostrarVenda = ven.ListarTodasVendas();
 

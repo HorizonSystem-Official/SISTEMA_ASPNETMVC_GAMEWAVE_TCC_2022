@@ -73,6 +73,38 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Models
             return tempCliLista;
         }
 
+        public List<Cliente> ListarCliPeloCPF(string CPFCli)
+        {
+            //IRÁ ABRIR A CONEXÃO E UTILIZAR TODA A TABELA PARA REGISTROS E É AUTENTICADO A CONEXÃO COM O CONNECTION
+            conexao.Open();
+            cmd.CommandText = "call spPesquisaCPFCliente(@spCPF)";
+            cmd.Parameters.Add("@spCPF", MySqlDbType.VarChar).Value = CPFCli;
+            cmd.Connection = conexao;
+
+            //É INSERIDO OS REGISTROS DO BANCO PELO ExecuteReader()
+            var read = cmd.ExecuteReader();
+            List<Cliente> tempCliLista = new List<Cliente>();
+
+            //ENQUANTO TIVER REGISTRO NA read, irá adicionar os itens em uma lista com as variáveis abaixo do banco.
+            while (read.Read())
+            {
+                var tempCli = new Cliente();
+
+                tempCli.CPF = read["CPF"].ToString();
+                tempCli.Nome = read["NomeCliente"].ToString();
+                tempCli.DataNasc = DateTime.Parse(read["DataNasc"].ToString());
+                tempCli.EmailCli = read["EmailCli"].ToString();
+                tempCli.TelCli = read["TelCli"].ToString();
+
+                tempCliLista.Add(tempCli);
+            }
+            //É FECHADO A LEITURA DA VARIÁVEL read E TAMBÉM DA CONEXÃO DO BANCO, RETORNANDO A LISTA DE DIVERSOS REGISTROS
+            read.Close();
+            conexao.Close();
+
+            return tempCliLista;
+        }
+
         //SEMELHANTE AO ListarCli, PORÉM APENAS UM CLIENTE PELO SEU PARÂMETRO
         public Cliente ListaUMCliente(string CPF)
         {

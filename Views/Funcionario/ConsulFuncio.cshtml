@@ -8,10 +8,18 @@
 @if (TempData["MensagemAviso"] != null)
 {
     <div class="alert alert-success">
-         @TempData["MensagemAviso"]
-                     </div>
+        @TempData["MensagemAviso"]
+    </div>
 }
 <h2>Consulta dos Funcionários</h2>
+
+@using (Html.BeginForm("ConsulFuncio", "Funcionario", FormMethod.Get))
+{
+    <div class="buscaCPFFun">
+        <input id="CPFFun" name="CPFFun" placeholder="Procure pelo CPF" />
+        <button type="submit">Buscar</button>
+    </div>
+}
 
 <p>
     @Html.ActionLink("Adicionar um novo Funcionário", "CadInsert")

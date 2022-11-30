@@ -11,8 +11,16 @@
 }
 <h2>Consulta das Vendas</h2>
 
+@using (Html.BeginForm("ConsulVenda", "Carrinho", FormMethod.Get))
+{
+    <div class="buscaCPFCli">
+        <input id="CPFCli" name="CPFCli" placeholder="Procure pelo CPF" />
+        <button type="submit">Buscar</button>
+    </div>
+}
+
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Fazer uma Nova Venda", "FazerVenda")
 </p>
 <table class="table">
     <tr>

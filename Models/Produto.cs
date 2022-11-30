@@ -15,10 +15,10 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Models
 {
     public class Produto
     {
-        public Produto()
-        {
+        //public Produto()
+        //{
 
-        }
+        //}
 
         
         [Display(Name = "Código do Produto")]
@@ -134,6 +134,8 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Models
             return tempProdLista;
         }
 
+
+
         //SEMELHANTE AO MÉTODO DE LISTAGEM ACIMA, PORÉM IRÁ APENAS RETORAR UM PRODUTO PELO SEU PARÂMETRO ID
         public Produto ListaUMProdutoID(int codprod)
         {
@@ -188,8 +190,83 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Models
             conexao.Close();
             return TempProduto;
         }
+
+        public List<Produto> ListarProdPeloNome(string sppesquia)
+        {
+            //IRÁ ABRIR A CONEXÃO E UTILIZAR TODA A TABELA PARA REGISTROS E É AUTENTICADO A CONEXÃO COM O CONNECTION
+            conexao.Open();
+            cmd.CommandText = "spPesquisaProduto(@spPesquia)";
+            cmd.Parameters.Add("@spPesquia", MySqlDbType.VarChar).Value = sppesquia;
+            cmd.Connection = conexao;
+
+            //É INSERIDO OS REGISTROS DO BANCO PELO ExecuteReader()
+            var readProd = cmd.ExecuteReader();
+            List<Produto> tempProdLista = new List<Produto>();
+
+            //ENQUANTO TIVER REGISTRO NA readVend, irá adicionar os itens em uma lista com as variáveis abaixo do banco.
+            while (readProd.Read())
+            {
+                var tempProd = new Produto();
+
+                tempProd.CodProd = Int32.Parse(readProd["CodProd"].ToString());
+                tempProd.ProdNome = readProd["ProdNome"].ToString();
+                tempProd.ProdTipo = readProd["ProdTipo"].ToString();
+                //tempProd.ProdQtnEstoque = Int32.Parse(readProd["ProdQtnEstoque"].ToString());
+                //tempProd.ProdDesc = readProd["ProdDesc"].ToString();
+                //tempProd.ProdAnoLanc = readProd["ProdAnoLanc"].ToString();
+                //tempProd.ProdFaixaEtaria = readProd["ProdFaixaEtaria"].ToString();
+                tempProd.ProdValor = Decimal.Parse(readProd["ProdValor"].ToString());
+                tempProd.ImgCapa = readProd["ImgCapa"].ToString();
+                //tempProd.FK_Funcionario_IdFunc = Int32.Parse(readProd["FK_Funcionario_IdFunc"].ToString());
+
+                tempProdLista.Add(tempProd);
+            }
+            //É FECHADO A LEITURA DA VARIÁVEL readVend E TAMBÉM DA CONEXÃO DO BANCO, RETORNANDO A LISTA DE DIVERSOS REGISTROS
+            readProd.Close();
+            conexao.Close();
+
+            return tempProdLista;
+        }
+
+        public List<Produto> ListarProdPeloTipo(string spprodtipo)
+        {
+            //IRÁ ABRIR A CONEXÃO E UTILIZAR TODA A TABELA PARA REGISTROS E É AUTENTICADO A CONEXÃO COM O CONNECTION
+            conexao.Open();
+            cmd.CommandText = "spMostraProdCategoria(@spProdTipo)";
+            cmd.Parameters.Add("@spProdTipo", MySqlDbType.VarChar).Value = spprodtipo;
+            cmd.Connection = conexao;
+
+            //É INSERIDO OS REGISTROS DO BANCO PELO ExecuteReader()
+            var readProd = cmd.ExecuteReader();
+            List<Produto> tempProdLista = new List<Produto>();
+
+            //ENQUANTO TIVER REGISTRO NA readVend, irá adicionar os itens em uma lista com as variáveis abaixo do banco.
+            while (readProd.Read())
+            {
+                var tempProd = new Produto();
+
+                tempProd.CodProd = Int32.Parse(readProd["CodProd"].ToString());
+                tempProd.ProdNome = readProd["ProdNome"].ToString();
+                tempProd.ProdTipo = readProd["ProdTipo"].ToString();
+                //tempProd.ProdQtnEstoque = Int32.Parse(readProd["ProdQtnEstoque"].ToString());
+                //tempProd.ProdDesc = readProd["ProdDesc"].ToString();
+                //tempProd.ProdAnoLanc = readProd["ProdAnoLanc"].ToString();
+                //tempProd.ProdFaixaEtaria = readProd["ProdFaixaEtaria"].ToString();
+                tempProd.ProdValor = Decimal.Parse(readProd["ProdValor"].ToString());
+                tempProd.ImgCapa = readProd["ImgCapa"].ToString();
+                //tempProd.FK_Funcionario_IdFunc = Int32.Parse(readProd["FK_Funcionario_IdFunc"].ToString());
+
+                tempProdLista.Add(tempProd);
+            }
+            //É FECHADO A LEITURA DA VARIÁVEL readVend E TAMBÉM DA CONEXÃO DO BANCO, RETORNANDO A LISTA DE DIVERSOS REGISTROS
+            readProd.Close();
+            conexao.Close();
+
+            return tempProdLista;
+        }
+
         //FIM LISTAGEM
-        
+
         //MÉTODO PARA ALTERAR O PRODUTO, O PROCESSO É SEMELHANTE AO CAD VOID
         public void AlterProduto(Produto prod)
         {
