@@ -11,48 +11,45 @@
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.CPF)
-        <div class="form-group">
-            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
-            </div>
+    <div class="container" id="conteinerCadUser">
+        <div class="row text-center" id="tittleCadUser">
+            <h2>Atualizar Funcionário</h2>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DataNasc, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DataNasc, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DataNasc, "", new { @class = "text-danger" })
+        <form id="formCadUser">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.CPF)
+            <div class="row">
+                @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-12 marginT5", @id = "paddingCadUser" })
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        
+            <div class="row">
+                <div class="col-md-5">
+                    @Html.LabelFor(model => model.DataNasc, htmlAttributes: new { @class = "control-label col-md-12", @id = "labelCadUser" })
+                    @Html.EditorFor(model => model.DataNasc, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DataNasc, "", new { @class = "text-danger" })
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Cargo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Cargo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Cargo, "", new { @class = "text-danger" })
+                <div class="col-md-5">
+                    @Html.LabelFor(model => model.Cargo, htmlAttributes: new { @class = "control-label col-md-12", @id = "labelCadUser" })
+                    @Html.EditorFor(model => model.Cargo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Cargo, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Alterar" class="btn btn-default" />
+            <div class="col-md-12">
+                <input type="submit" value="Atualizar" class="btn btn-default" id="btnCadUser" />
             </div>
-        </div>
+        </form>
     </div>
-}
+    }
 
-<div>
-    @Html.ActionLink("Retornar a listagem dos funcionários", "ConsulFuncio")
-</div>
+    <div>
+        @Html.ActionLink("Retornar a listagem dos funcionários", "ConsulFuncio")
+    </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
