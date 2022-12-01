@@ -23,7 +23,7 @@
         </div>
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Home</a>
+                <a class="navbar-brand" href="@Url.Action("Index", "Login")">Home</a>
             </div>
             <ul class="nav navbar-nav" id="herderNav">
                 <li><a href="#">Promoções</a></li>
@@ -66,13 +66,13 @@
                             <li>@Html.ActionLink("Consultar Cupons", "ConsulCupom", "Cupom")</li>
                         </ul>
                    </li>
-                <li><a href="@Url.Action("Logout", "Login")"><span class="glyphicon glyphicon-log-in"></span></a></li>
-                <li><a href="@Url.Action("VerCarrinhoIndex", "Carrinho")"><img id="imgHeader" src="http://cdn.onlinewebfonts.com/svg/img_324664.png" alt="Carrinho"></a></li>
+                <li><a href="@Url.Action("Logout", "Login")"><img id="imgHeader" src="~/Image/log_out.png" alt="Carrinho"></a></li>
+                <li><a href="@Url.Action("VerCarrinhoIndex", "Carrinho")"><img id="imgHeader" src="~/Image/shopping-cart (1).png" alt="Carrinho"></a></li>
 
             }
             else
             {
-                <li><a class="nav-link" href="@Url.Action("Login", "Login")"><img id="imgHeader" src="https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png" alt="user"></a></li>
+                <li><a class="nav-link" href="@Url.Action("Login", "Login")"><img id="imgHeader" src="~/Image/user (1).png" alt="user"></a></li>
 
             }
                 </ul>

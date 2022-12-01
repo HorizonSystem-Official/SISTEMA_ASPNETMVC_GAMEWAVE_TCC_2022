@@ -98,7 +98,12 @@
                             </a>
                         </td>
                         <td>
-                            <p class="lead" style=" margin-top: 10%;">
+                            <p class="lead marginT5">
+                                @Html.DisplayFor(modelItem => item.ProdNome)
+                            </p>
+                        </td>
+                        <td>
+                            <p class="lead marginT5">
                                 R$@Html.DisplayFor(modelItem => item.ProdValor)
                             </p>
                         </td>

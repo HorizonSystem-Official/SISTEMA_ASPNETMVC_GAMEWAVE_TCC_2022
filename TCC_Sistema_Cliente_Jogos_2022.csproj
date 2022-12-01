@@ -187,11 +187,15 @@
     <Content Include="Image\cruzado.png" />
     <Content Include="Image\editar.png" />
     <Content Include="Image\Icone.ico" />
+    <Content Include="Image\left.png" />
     <Content Include="Image\logogameswave.png" />
     <Content Include="Image\logoMarcasGames.png" />
+    <Content Include="Image\logout.png" />
     <Content Include="Image\log_out.png" />
     <Content Include="Image\mais.png" />
+    <Content Include="Image\shopping-cart %281%29.png" />
     <Content Include="Image\THE SIMS 4 GRATUITO!.png" />
+    <Content Include="Image\user %281%29.png" />
     <Content Include="Scripts\BdTCC_updt %28ASP%29.sql" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

@@ -4,48 +4,13 @@
     ViewBag.Title = "EdiCliente";
 }
 
-<h2>Editar esse Cliente</h2>
-
+<h2>Editar Cliente</h2>
+<a href="@Url.Action("ConsulCli")"><img src="~/Image/left.png" alt="volta" class="marginL5" id="icon" /> <span>voltar</span></a>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
-<div class="form-horizontal">
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.CPF)
-    <div class="form-group">
-        @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.DataNasc, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.DataNasc, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.DataNasc, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.EmailCli, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.EmailCli, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.EmailCli, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.TelCli, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.TelCli, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.TelCli, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
     <div class="container" id="conteinerCadUser">
         <div class="row text-center" id="tittleCadUser">
             <h2>Atualizar dados</h2>
@@ -88,9 +53,6 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Retornar a listagem dos clientes", "ConsulCli")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
