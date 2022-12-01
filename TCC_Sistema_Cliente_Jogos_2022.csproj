@@ -177,7 +177,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Image\BEM-VINDO À LOJA GAME WAVE!.png" />
-    <Content Include="Image\BENDY AND THE DARK REVIVAL.jpg" />
+    <Content Include="Image\BENDY AND THE DARK REVIVAL.png" />
     <Content Include="Image\classificacao_12_anos_.png" />
     <Content Include="Image\classind_10.png" />
     <Content Include="Image\classind_14.png" />
@@ -195,6 +195,7 @@
     <Content Include="Image\mais.png" />
     <Content Include="Image\shopping-cart %281%29.png" />
     <Content Include="Image\THE SIMS 4 GRATUITO!.png" />
+    <Content Include="Image\UMA JORNADA INTERGALÁTICA %281%29.png" />
     <Content Include="Image\user %281%29.png" />
     <Content Include="Scripts\BdTCC_updt %28ASP%29.sql" />
     <Content Include="Scripts\bootstrap.js" />

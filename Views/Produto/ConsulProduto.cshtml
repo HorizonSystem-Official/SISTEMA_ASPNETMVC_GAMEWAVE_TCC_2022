@@ -11,19 +11,18 @@
     </div>
 }
 
-<h2>Pesquisa:"####Recebe Texto pesqusaido###"</h2>
-
-
-<p>
-    @Html.ActionLink("Adicionar um novo Produto", "CadProduto")
-</p>
 <div class="container aling-center" id="BoxProdPesq">
     <div class="row">
+        <div class="row">
+            <div class="col-sm-6">
+                <a href="@Url.Action("CadProduto")" class="btn btnAdd marginL5 marginT5" data-toggle="modal"><img src="~/Image/mais.png" alt="Mais" id="icon" /> <span>Adicionar um novo Produto</span></a>
+            </div>
+        </div>
 
         @foreach (var item in Model)
         {
-            <div class="col-sm-3 marginT5">
-                <tr>
+            <div class="col-sm-3" style="height: 70vh;">
+                <tr class="itemProdPesq">
                     <td>
                         @Html.HiddenFor(modelItem => item.CodProd) <br />
                     </td>

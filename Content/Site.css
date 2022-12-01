@@ -162,8 +162,8 @@
 }
 /*Pesquisa*/
 #BoxProdPesq {
-    width: 90%;
-    margin: 5% 5%;
+    width: 80%;
+    margin: 1% 10%;
 }
 
 /*Lista*/
@@ -176,6 +176,10 @@
 .inputPesqGeral {
     width:30%;
     margin:4% 1% 2% 8%;
+}
+
+#itemProdPesq {
+    height: 45vh;
 }
 /*Cadastro de cliente*/
 #conteinerCadUser {

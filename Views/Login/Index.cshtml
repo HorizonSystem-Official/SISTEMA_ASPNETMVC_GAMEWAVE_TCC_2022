@@ -79,15 +79,17 @@
         </div>
     </div>
 
+    <img src="~/Image/THE SIMS 4 GRATUITO!.png" id="espaco" />
+
     <div class="container aling-center" id="BoxProdHome">
         <h1 class="text-capitalize">
-           Catalogo
+            Catalogo
         </h1>
         <div class="row">
             @foreach (var item in Model)
             {
 
-                <div class="col-sm-3">
+                <div class="col-sm-3" style="height: 45vh;">
                     <tr>
                         <td>
                             @Html.HiddenFor(modelItem => item.CodProd) <br />
@@ -115,9 +117,9 @@
         </div>
     </div>
 
-        <img src="~/Image/THE SIMS 4 GRATUITO!.png" id="espaco" />
+    <img src="~/Image/UMA JORNADA INTERGALÁTICA (1).png" width="100%" height="100%"/>
 
-        <img src="~/Image/BENDY AND THE DARK REVIVAL.jpg" id="espaco" />
+    <img src="~/Image/BENDY AND THE DARK REVIVAL.jpg" width="100%" height="100%" />
 
-        <img src="~/Image/logoMarcasGames.png" id="imgMarcas" />
-    </div>
+    <img src="~/Image/logoMarcasGames.png" id="imgMarcas" />
+</div>
