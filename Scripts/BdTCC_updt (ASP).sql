@@ -486,7 +486,6 @@ create view vm_Comentarios as
     inner join tbproduto on tbproduto.CodProd = tbcomentarios.Fk_CodProd;
 
 delimiter $$
-
 create procedure spVerComentarios(spCodProd int)
 begin
 	select * from vm_Comentarios where CodProd = spCodProd;
@@ -550,6 +549,53 @@ call spInsertImg("https://img.utdstc.com/screen/fad/8f5/fad8f5dd318d30ce1e8ba254
 call spInsertComentarios("Muito bom", 3, "333.333.333-33");
 call spInsertComentarios("jogo epico nosssa", 1, "333.333.333-33");
 
+call spInsertComentarios("Diverido", 2, "333.333.333-33");
+call spInsertComentarios("Amei", 2, "918.545.618-38");
+
+call spInsertComentarios("Muito Asustador", 3, "057.184.478-29");
+call spInsertComentarios("jogo Muito bom XD", 3, "333.333.333-33");
+call spInsertComentarios("Fofo :D", 3, "257.938.258-51");
+call spInsertComentarios("jogo epico nosssa", 3, "561.454.118-94");
+
+call spInsertComentarios("Historia boa", 4, "257.938.258-51");
+call spInsertComentarios("jogo epico nosssa", 4, "918.545.618-38");
+call spInsertComentarios("Difcil", 4, "057.184.478-29");
+
+call spInsertComentarios("Amo Star Wars", 5, "561.454.118-94");
+
+call spInsertComentarios("Muito bom", 6, "333.333.333-33");
+call spInsertComentarios("jogo epico nosssa", 6, "057.184.478-29");
+
+call spInsertComentarios("o JOgo te cativa", 7, "057.184.478-29");
+call spInsertComentarios("Ruim", 7, "333.333.333-33");
+
+call spInsertComentarios("Bora cratos", 9, "561.454.118-94");
+call spInsertComentarios("Amei essa versão", 9, "918.545.618-38");
+call spInsertComentarios("bom", 10, "333.333.333-33");
+call spInsertComentarios("Pessimo", 10, "057.184.478-29");
+
+call spInsertComentarios("Jogo de Otaku", 11, "333.333.333-33");
+call spInsertComentarios("Gastei todo o meu dinheiro", 11, "918.545.618-38");
+call spInsertComentarios("Visiante", 11, "561.414.118-94");
+
+call spInsertComentarios("jogo epico nosssa", 12, "674.364.258-46");
+
+call spInsertComentarios("Vampiros são demais", 13, "918.545.618-38");
+call spInsertComentarios("Dificil", 13, "561.454.118-94");
+
+call spInsertComentarios("Mine nunca decepciona", 14, "674.364.258-46");
+call spInsertComentarios("jogo criativo", 14, "333.333.333-33");
+
+call spInsertComentarios("Muito bom", 15, "561.414.118-94");
+call spInsertComentarios("jogo epico nosssa", 15, "561.454.118-94");
+call spInsertComentarios("Bem realista", 15, "674.364.258-46");
+call spInsertComentarios("Horrivel", 15, "333.333.333-33");
+
+call spInsertComentarios("Não paro de jogar", 16, "674.364.258-46");
+call spInsertComentarios("jogo epico", 16, "257.938.258-51");
+call spInsertComentarios("Não joguem", 16, "333.333.333-33");
+
+call spInsertComentarios("Amo esses carros", 17, "257.938.258-51");
 
 #####################################
 #									#

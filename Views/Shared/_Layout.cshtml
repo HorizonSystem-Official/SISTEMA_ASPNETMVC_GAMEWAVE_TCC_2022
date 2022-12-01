@@ -21,7 +21,7 @@
             </button>
             <a href="@Url.Action("Index", "Login")"><img src="~/Image/logogameswave.png" alt="logo" id="logo"></a>
         </div>
-        <div class="container-fluid" >
+        <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">Home</a>
             </div>
@@ -29,7 +29,7 @@
                 <li><a href="#">Promoções</a></li>
                 <li><a href="#">Novos</a></li>
                 <li><a href="#">Lançamentos</a></li>
-                
+
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -53,16 +53,30 @@
 
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span></a></li>
-                    <li><a class="nav-link" href="@Html.ActionLink(" ", "VerCarrinhoIndex", "Carrinho")"><img id="imgHeader" src="http://cdn.onlinewebfonts.com/svg/img_324664.png" alt="Carrinho"></a></li>
-                }
-                else
-                {
-                    <li><a class="nav-link" href="@Url.Action("Login", "Login")"><img id="imgHeader" src="https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png" alt="user"></a></li>
+                    <!--Dropdown-->
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Painel do funcionario<span class="caret"></span></a>
+                        <ul class="dropdown-menu">         
+                            <li> @Html.ActionLink("Consultar Funcionarios", "ConsulFuncio", "Funcionario")</li>
+                            <li>@Html.ActionLink("Consultar Clientes", "ConsulCli", "Cliente")</li>
+                            <li>@Html.ActionLink("Consultar Produtos", "ConsulProduto", "Produto")</li>
+                            <li>@Html.ActionLink("Ver Carrinho", "VerCarrinhoIndex", "Carrinho")</li>
+                            <li>@Html.ActionLink("Fazer Venda", "FazerVenda", "Carrinho")</li>
+                            <li>@Html.ActionLink("Consultar Vendas", "ConsulVenda", "Carrinho")</li>
+                            <li>@Html.ActionLink("Consultar Cupons", "ConsulCupom", "Cupom")</li>
+                        </ul>
+                   </li>
+                <li><a href="@Url.Action("Logout", "Login")"><span class="glyphicon glyphicon-log-in"></span></a></li>
+                <li><a href="@Url.Action("VerCarrinhoIndex", "Carrinho")"><img id="imgHeader" src="http://cdn.onlinewebfonts.com/svg/img_324664.png" alt="Carrinho"></a></li>
 
-                }
-            </ul>
-        </div>
+            }
+            else
+            {
+                <li><a class="nav-link" href="@Url.Action("Login", "Login")"><img id="imgHeader" src="https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png" alt="user"></a></li>
+
+            }
+                </ul>
+            </div>
     </nav>
     <!--ACIMA É A NAVBAR-->
     <div class="container body-content">

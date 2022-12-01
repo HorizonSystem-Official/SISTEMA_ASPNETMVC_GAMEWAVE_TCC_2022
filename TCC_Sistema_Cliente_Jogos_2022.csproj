@@ -184,10 +184,13 @@
     <Content Include="Image\classind_16.png" />
     <Content Include="Image\classind_18.png" />
     <Content Include="Image\classind_l.png" />
+    <Content Include="Image\cruzado.png" />
+    <Content Include="Image\editar.png" />
     <Content Include="Image\Icone.ico" />
     <Content Include="Image\logogameswave.png" />
     <Content Include="Image\logoMarcasGames.png" />
     <Content Include="Image\log_out.png" />
+    <Content Include="Image\mais.png" />
     <Content Include="Image\THE SIMS 4 GRATUITO!.png" />
     <Content Include="Scripts\BdTCC_updt %28ASP%29.sql" />
     <Content Include="Scripts\bootstrap.js" />

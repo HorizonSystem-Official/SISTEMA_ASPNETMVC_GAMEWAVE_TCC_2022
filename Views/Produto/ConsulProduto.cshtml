@@ -11,35 +11,21 @@
     </div>
 }
 
-<h2>Consulte nossos produtos</h2>
-@using (Html.BeginForm("ConsulProduto", "Produto", FormMethod.Get))
-{
-    <div class="buscaGeral">
-        <input id="spPesquia" name="spPesquia" placeholder="Procure um game" />
-        <button type="submit">Buscar</button>
-    </div>
-}
-
-@using (Html.BeginForm("ConsulProduto", "Produto", FormMethod.Get))
-{
-    <div class="buscaGeral">
-        <input id="spProdTipo" name="spProdTipo" placeholder="Procure um tipo de game" />
-        <button type="submit">Buscar</button>
-    </div>
-}
+<h2>Produtos:</h2>
 
 
 <p>
     @Html.ActionLink("Adicionar um novo Produto", "CadProduto")
 </p>
-<div class="row">
+<div class="row" style="padding:2% 5%">
 
     @foreach (var item in Model)
     {
+
         <div class="item  col-xs-4 col-lg-4">
-            <div class="thumbnail">
+            <div class="thumbnail" id="BoxPesquisa">
                 <a href="@Url.Action("DetalhesProduto", new { codprod = item.CodProd })">
-                    <img class="thumb-post " src="@Url.Content(item.ImgCapa)" alt="Img produto" />
+                    <img class="img-thumbnail" src="@Url.Content(item.ImgCapa)" alt="Img produto" />
                 </a>
 
                 <div class="center-cropped"

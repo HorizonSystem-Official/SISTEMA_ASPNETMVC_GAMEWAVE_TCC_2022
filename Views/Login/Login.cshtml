@@ -5,43 +5,42 @@
 }
 <style>
 
-* {
-	box-sizing: border-box;
-}
+    * {
+        box-sizing: border-box;
+    }
 
-#conteiner {
-	background: #f6f5f7;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 20vh;
-	margin: 50px;
-	background-color: #fff;
-	border-radius: 10px;
-  	box-shadow: 0 14px 28px rgba(0,0,0,0.25),
-			0 10px 10px rgba(0,0,0,0.22);
-	position: relative;
-	overflow: hidden;
-	width: 768px;
-	max-width: 100%;
-	min-height: 480px;
-}
+    #conteiner {
+        background: #f6f5f7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 20vh;
+        margin: 50px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        position: relative;
+        overflow: hidden;
+        width: 768px;
+        max-width: 100%;
+        min-height: 480px;
+    }
 
-h1 {
-	font-weight: bold;
-}
+    h1 {
+        font-weight: bold;
+    }
 
-h2 {
-	text-align: center;
-}
+    h2 {
+        text-align: center;
+    }
 
-p {
-	font-size: 18px;
-	font-weight: 100;
-	line-height: 20px;
-	letter-spacing: 0.5px;
-	margin: 20px 0 30px;
-}
+    p {
+        font-size: 18px;
+        font-weight: 100;
+        line-height: 20px;
+        letter-spacing: 0.5px;
+        margin: 20px 0 30px;
+    }
 
     a {
         font-weight: bold;
@@ -50,6 +49,7 @@ p {
         text-decoration: none;
         margin: 15px 0;
     }
+
         a:hover {
             color: #ccc;
         }
@@ -67,30 +67,30 @@ p {
         transition: transform 80ms ease-in;
     }
 
-.button:active {
-	transform: scale(0.95);
-}
+        .button:active {
+            transform: scale(0.95);
+        }
 
-.button:focus {
-	outline: none;
-}
+        .button:focus {
+            outline: none;
+        }
 
-.button.ghost {
-	background-color: transparent;
-	border-color: #FFFFFF;
-}
+        .button.ghost {
+            background-color: transparent;
+            border-color: #FFFFFF;
+        }
 
-form {
-	background-color: #FFFFFF;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	padding: 0 40px;
-    width: 100%;
-	height: 100%;
-	text-align: center;
-}
+    form {
+        background-color: #FFFFFF;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 0 40px;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+    }
 
     #input {
         font-weight: bold;
@@ -107,16 +107,15 @@ form {
         color: #fff;
     }
 
-.boxLogin{
-  height: 100%;
-  position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	text-align: center;
-}
-
+    .boxLogin {
+        height: 100%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
 </style>
 
 @using (Html.BeginForm())
@@ -126,22 +125,26 @@ form {
     <div class="row" id="conteiner">
         <div class="col-sm-6 boxLogin" id="login">
             <form action="#">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.UrlRetorno)
                 <h1 magin-bottom="30px">Login</h1>
-                @Html.EditorFor(model => model.CPFLogin, new { htmlAttributes = new { @class = "form-control", @id = "input", placeholder = "CPF" } })
+                @Html.EditorFor(model => model.CPFLogin, new { htmlAttributes = new { @class = "form-control", @id = "input", placeholder = "CPF", value="551.031.095-22" } })
                 @Html.ValidationMessageFor(model => model.CPFLogin, "", new { @class = "text-danger" })
-    
-                @Html.EditorFor(model => model.SenhaLogin, new { htmlAttributes = new { @class = "form-control", @id = "input", placeholder = "Senha" } })
+
+                @Html.EditorFor(model => model.SenhaLogin, new { htmlAttributes = new { @class = "form-control", @id = "input", placeholder = "Senha", value="123456" } })
                 @Html.ValidationMessageFor(model => model.SenhaLogin, "", new { @class = "text-danger" })
                 <a href="#">Esqueceu sua senha?</a>
-                <button class="button">Entrar</button>
+                <button type="submit" class="button">Entrar</button>
             </form>
         </div>
         <div class="col-sm-6 boxLogin" id="Cadastre">
             <h1>Ola!</h1>
             <p>Ainda não tem conta? click aqui para se cadastrar</p>
-            <a class="button ghost"  href="@Url.Action("CadCliente","Cliente")" id="signUp">Cadastrar-se</a>
+            <a class="button ghost" href="@Url.Action("CadCliente","Cliente")" id="signUp">Cadastrar-se</a>
         </div>
     </div>
 
 }
-
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

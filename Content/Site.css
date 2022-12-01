@@ -20,6 +20,8 @@
     background-color: var(--roxoEscuro);
     margin: 0;
     padding:20px;
+    border:none;
+    border-radius:0px;
 }
 
 #logo {
@@ -40,7 +42,7 @@
 
 
 .navbar-nav .nav-item .nav-link {
-    color: #222;
+    color: #fff;
 }
 
     .navbar-nav .nav-item .nav-link:hover {
@@ -52,19 +54,6 @@
     width: 100%;
     padding: 0;
     margin: 0;
-}
-
-#boxAuxHome {
-    font-size: 14px;
-    background-color: #EDA0C5;
-    color: var(--roxo);
-    font-weight: bold;
-    padding:2%;
-    margin-top:-15%;
-}
-
-#textoBomAuxHome {
-    font-size: 14px;
 }
 
 #TodaHome {
@@ -125,6 +114,17 @@
     margin: 3% 10%;
 }
 
+#boxComente{
+    color: #555f77;
+    font-family: inherit;
+    font-size: 14px;
+    width: 60%;
+    margin:5% 20%;
+}
+    
+    #BoxPesquisa {
+    height:100vh;
+}
 /*Cadastro de cliente*/
 #conteinerCadUser {
     background: #f6f5f7;
@@ -135,7 +135,7 @@
     position: relative;
     overflow: hidden;
     width: 70%;
-    margin:5% 15%;
+    margin: 5% 15%;
     max-width: 100%;
     min-height: 480px;
 }

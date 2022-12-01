@@ -3,6 +3,24 @@
 @{
     ViewBag.Title = "Index";
 }
+<style>
+    #textoBoxAuxHome {
+        font-size: 12px;
+        margin-top: 16px;
+    }
+
+    .boxHome {
+        background-color: #EDA0C5;
+        padding: 3% 5%;
+        color: #270027;
+        margin-top:-5%;
+    }
+
+    #BoxHomeEscuro {
+        background-color: #270027;
+        color:#fff;
+    }
+</style>
 <div id="TodaHome">
 
 
@@ -17,68 +35,68 @@
 
     <div class="container aling-center">
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-md-4 boxHome">
                 <h3 class="group inner list-group-item-heading">
                     Novidades
                 </h3>
 
-                <p class="lead" id="textoBomAuxHome">
+                <p class="lead" id="textoBoxAuxHome">
                     Confira os lançamentos mais recentes aqui na GAME WAVE.
                 </p>
 
                 <div class="row">
-                    <div class="col-xs-12 col-md-4"> -></div>
+                    <span class="glyphicon glyphicon-chevron-right"></span>
                 </div>
             </div>
 
-            <div class="col-sm-3" style="background-color: #3D003D">
+            <div class="col-md-4 boxHome" id="BoxHomeEscuro">
                 <h3 class="group inner list-group-item-heading">
-                    Novidades
+                    Promoção rapida
                 </h3>
 
-                <p class="lead" id="textoBomAuxHome" style="color: #ccc">
-                    Confira os lançamentos mais recentes aqui na GAME WAVE.
+                <p class="lead" id="textoBoxAuxHome">
+                    Cheque as nossas promoções por tempo limitado!
                 </p>
 
                 <div class="row">
-                    <div class="col-xs-12 col-md-4"> -></div>
+                    <span class="glyphicon glyphicon-chevron-right"></span>
                 </div>
             </div>
 
-            <div class="col-sm-3">
+            <div class="col-md-4 boxHome">
                 <h3 class="group inner list-group-item-heading">
-                    Novidades
+                    Jogos Free
                 </h3>
 
-                <p class="lead" id="textoBomAuxHome">
-                    Confira os lançamentos mais recentes aqui na GAME WAVE.
+                <p class="lead" id="textoBoxAuxHome">
+                    Após realizar sua primeira compra, resgate um jogo.
                 </p>
 
                 <div class="row">
-                    <div class="col-xs-12 col-md-4"> -></div>
+                    <span class="glyphicon glyphicon-chevron-right"></span>
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 
 
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.HiddenFor(modelItem => item.CodProd) <br />
-                    </td>
-                    <td>
-                        <a href="@Url.Action("DetalhesProduto", "Produto", new { codprod = item.CodProd})">
-                            <img src="@Url.Content(item.ImgCapa)" width="100px" height="100px" />
-                        </a>
-                    </td>
-                </tr>
-            }
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.HiddenFor(modelItem => item.CodProd) <br />
+            </td>
+            <td>
+                <a href="@Url.Action("DetalhesProduto", "Produto", new { codprod = item.CodProd})">
+                    <img src="@Url.Content(item.ImgCapa)" width="100px" height="100px" />
+                </a>
+            </td>
+        </tr>
+    }
 
-            <img src="~/Image/THE SIMS 4 GRATUITO!.png" id="espaco" />
+    <img src="~/Image/THE SIMS 4 GRATUITO!.png" id="espaco" />
 
-            <img src="~/Image/BENDY AND THE DARK REVIVAL.jpg" id="espaco" />
+    <img src="~/Image/BENDY AND THE DARK REVIVAL.jpg" id="espaco" />
 
-            <img src="~/Image/logoMarcasGames.png" id="imgMarcas" />
-        </div>
+    <img src="~/Image/logoMarcasGames.png" id="imgMarcas" />
+</div>

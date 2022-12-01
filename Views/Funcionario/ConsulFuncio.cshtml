@@ -4,6 +4,13 @@
     ViewBag.Title = "ConsulFuncio";
 }
 
+<style>
+
+    #icon {
+        width: 32px;
+        height: 32px;
+    }
+</style>
 
 @if (TempData["MensagemAviso"] != null)
 {
@@ -16,57 +23,60 @@
 @using (Html.BeginForm("ConsulFuncio", "Funcionario", FormMethod.Get))
 {
     <div class="buscaCPFFun">
-        <input id="CPFFun" name="CPFFun" placeholder="Procure pelo CPF" />
-        <button type="submit">Buscar</button>
-    </div>
-}
+        <input id="CPFFun" type="text" name="CPFFun" placeholder="Buscar um funcionario pelo CPF" />
+        <button type="submit"><i class="glyphicon glyphicon-search"></i></button>  
+      </div>
+        }
 
-<p>
-    @Html.ActionLink("Adicionar um novo Funcionário", "CadInsert")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IdFunc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataNasc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CPF)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cargo)
-        </th>
-        <th></th>
-    </tr>
+        <div class="container">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <a href="@Url.Action("CadInsert")" class="btn btn-success" data-toggle="modal"><img src="~/Image/mais.png" alt="Mais" id="icon" /> <span>Adicionar um novo Funcionário</span></a>
+                        </div>
+                    </div>
+                </div>
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Nome)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DataNasc)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CPF)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Cargo)
+                        </th>
+                        <th></th>
+                    </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdFunc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataNasc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CPF)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cargo)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "EdiFuncio", new { CPF = item.CPF }) |
-                @Html.ActionLink("Apagar", "DelFuncio", new { IdFunc = item.IdFunc })
-            </td>
-        </tr>
-    }
+                    @foreach (var item in Model)
+                    {
+                        <tr>                   
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DataNasc)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CPF)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Cargo)
+                            </td>
+                            <td>
+                                <a href="@Url.Action("EdiFuncio", new { CPF = item.CPF })" class="edit" data-toggle="modal"><img id="icon" src="~/Image/editar.png" alt="Altera" /></a>
+                                <a href="@Url.Action("DelFuncio", new { IdFunc = item.IdFunc }) class="delete" data-toggle="modal"><img id="icon" src="~/Image/cruzado.png" alt="Delete" /></a>
+                            </td>
+                        </tr>
+                    }
 
-</table>
+                </table>
+            </div>
+        </div>
+
