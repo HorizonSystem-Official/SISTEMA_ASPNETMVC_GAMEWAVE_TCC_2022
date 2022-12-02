@@ -212,6 +212,7 @@
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\Venda.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\CustomAuthorize.cs" />
     <Compile Include="Utils\Hash.cs" />
     <Compile Include="Utils\ImageCrop.cs" />
     <Compile Include="ViewModels\ClienteViewModel.cs" />
@@ -232,7 +233,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Image\BEM-VINDO À LOJA GAME WAVE!.png" />
-    <Content Include="Image\BENDY AND THE DARK REVIVAL.png" />
+    <Content Include="Image\BENDY AND THE DARK REVIVAL.jpg" />
     <Content Include="Image\classificacao_12_anos_.png" />
     <Content Include="Image\classind_10.png" />
     <Content Include="Image\classind_14.png" />
@@ -242,16 +243,11 @@
     <Content Include="Image\cruzado.png" />
     <Content Include="Image\editar.png" />
     <Content Include="Image\Icone.ico" />
-    <Content Include="Image\left.png" />
     <Content Include="Image\logogameswave.png" />
     <Content Include="Image\logoMarcasGames.png" />
-    <Content Include="Image\logout.png" />
     <Content Include="Image\log_out.png" />
     <Content Include="Image\mais.png" />
-    <Content Include="Image\shopping-cart %281%29.png" />
     <Content Include="Image\THE SIMS 4 GRATUITO!.png" />
-    <Content Include="Image\UMA JORNADA INTERGALÁTICA %281%29.png" />
-    <Content Include="Image\user %281%29.png" />
     <Content Include="Scripts\BdTCC_updt %28ASP%29.sql" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
