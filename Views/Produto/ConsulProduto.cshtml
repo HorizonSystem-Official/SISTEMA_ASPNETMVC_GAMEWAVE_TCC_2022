@@ -11,45 +11,42 @@
     </div>
 }
 
-<h2>Produtos:</h2>
-
-
-<p>
-    @Html.ActionLink("Adicionar um novo Produto", "CadProduto")
-</p>
-<div class="row" style="padding:2% 5%">
-
-    @foreach (var item in Model)
-    {
-
-        <div class="item  col-xs-4 col-lg-4">
-            <div class="thumbnail" id="BoxPesquisa">
-                <a href="@Url.Action("DetalhesProduto", new { codprod = item.CodProd })">
-                    <img class="img-thumbnail" src="@Url.Content(item.ImgCapa)" alt="Img produto" />
-                </a>
-
-                <div class="center-cropped"
-                     style="background-image: url('@Url.Content(item.ImgCapa)');">
-                </div>
-                <div class="caption">
-                    <h3 class="group inner list-group-item-heading">
-                        @Html.DisplayFor(modelItem => item.ProdNome)
-                    </h3>
-                    <div class="row">
-                        <div class="col-xs-12 col-md-12">
-                            <p class="lead">
-                                R$@Html.DisplayFor(modelItem => item.ProdValor)
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-md-12">
-                            <a class="btn btn-success" id="btnAddCar" href="@Url.Action("DetalhesProduto", new { codprod = item.CodProd })">Detalhes</a>
-                        </div>
-                    </div>
-                </div>
+<div class="container aling-center" id="BoxProdPesq">
+    <div class="row">
+        <div class="row">
+            <div class="col-sm-6">
+                <a href="@Url.Action("CadProduto")" class="btn btnAdd marginL5 marginT5" data-toggle="modal"><img src="~/Image/mais.png" alt="Mais" id="icon" /> <span>Adicionar um novo Produto</span></a>
             </div>
-        </div>   
-    }
+        </div>
+
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-3" style="height: 70vh;">
+                <tr class="itemProdPesq">
+                    <td>
+                        @Html.HiddenFor(modelItem => item.CodProd) <br />
+                    </td>
+                    <td>
+                        <a href="@Url.Action("DetalhesProduto", "Produto", new { codprod = item.CodProd})">
+                            <img src="@Url.Content(item.ImgCapa)" width="250px" height="250px" />
+                        </a>
+                    </td>
+                    <td>
+                        <h3 class="group inner list-group-item-heading marginT5">
+                            @Html.DisplayFor(modelItem => item.ProdNome)
+                        </h3>
+                    </td>
+                    <td>
+                        <p class="lead marginT5">
+                            R$@Html.DisplayFor(modelItem => item.ProdValor)
+                        </p>
+                    </td>
+                    <td>
+                        <a class="btn btn-lg btn-block" id="btnAddCar" href="@Url.Action("DetalhesProduto", new { codprod = item.CodProd })">Detalhes</a>
+                    </td>
+                </tr>
+            </div>
+        }
+    </div>
 
 </div>

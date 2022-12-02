@@ -4,18 +4,14 @@
     ViewBag.Title = "Login";
 }
 <style>
-
-    * {
-        box-sizing: border-box;
-    }
-
     #conteiner {
+        box-sizing: border-box;
         background: #f6f5f7;
         display: flex;
         justify-content: center;
         align-items: center;
         height: 20vh;
-        margin: 50px;
+        margin: 5% 20%;
         background-color: #fff;
         border-radius: 10px;
         box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
@@ -80,7 +76,7 @@
             border-color: #FFFFFF;
         }
 
-    form {
+    #formLogin {
         background-color: #FFFFFF;
         display: flex;
         align-items: center;
@@ -122,16 +118,16 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="row" id="conteiner">
+    <div class="row aling-center" id="conteiner">
         <div class="col-sm-6 boxLogin" id="login">
-            <form action="#">
+            <form action="#" id="formLogin">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 @Html.HiddenFor(model => model.UrlRetorno)
                 <h1 magin-bottom="30px">Login</h1>
-                @Html.EditorFor(model => model.CPFLogin, new { htmlAttributes = new { @class = "form-control", @id = "input", placeholder = "CPF", value="551.031.095-22" } })
+                @Html.EditorFor(model => model.CPFLogin, new { htmlAttributes = new { @class = "form-control", @id = "input", placeholder = "CPF" } })
                 @Html.ValidationMessageFor(model => model.CPFLogin, "", new { @class = "text-danger" })
 
-                @Html.EditorFor(model => model.SenhaLogin, new { htmlAttributes = new { @class = "form-control", @id = "input", placeholder = "Senha", value="123456" } })
+                @Html.EditorFor(model => model.SenhaLogin, new { htmlAttributes = new { @class = "form-control", @id = "input", placeholder = "Senha"} })
                 @Html.ValidationMessageFor(model => model.SenhaLogin, "", new { @class = "text-danger" })
                 <a href="#">Esqueceu sua senha?</a>
                 <button type="submit" class="button">Entrar</button>

@@ -5,66 +5,61 @@
 }
 
 <h2>Seu Carrinho</h2>
+<a href="@Url.Action("Index", "Login")"><img src="~/Image/left.png" alt="volta" class="marginL5" id="icon" /> <span>voltar</span></a>
 
+<div class="container">
+    <div class="table-wrapper">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProdNome)
+                </th>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ProdNome)
-        </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImgCapa)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.QtnProd)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ValorUnit)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ValorTotal)
+                </th>
+                <th></th>
+            </tr>
 
-        <th>
-            @Html.DisplayNameFor(model => model.ImgCapa)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.QtnProd)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ValorUnit)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ValorTotal)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.fk_Produto_CodProd)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fk_Carrinho_CodCarrinho)
-        </th>*@
-  
-        <th></th>
-    </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProdNome)
+                    </td>
+                    <td>
+                        <img src="@Url.Content(item.ImgCapa)" width="100px" height="100px" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.QtnProd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ValorUnit)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ValorTotal)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(modelItem => item.fk_Produto_CodProd)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(modelItem => item.fk_Carrinho_CodCarrinho)
+                    </td>
+                    <td>                
+                        <a href="@Url.Action("DelCupom", new { fk_Produto_CodProd = item.fk_Produto_CodProd }) class="delete" data-toggle="modal"><img id="icon" src="~/Image/cruzado.png" alt="Delete" /></a>
+                    </td>
+                </tr>
+            }
 
-@foreach (var item in Model) {
-    <tr>
-   
-        <td>
-            @Html.DisplayFor(modelItem => item.ProdNome)
-        </td>
-        <td>
-            <img src="@Url.Content(item.ImgCapa)" width="100px" height="100px" />
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.QtnProd)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ValorUnit)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ValorTotal)
-        </td>
-        <td>
-            @Html.HiddenFor(modelItem => item.fk_Produto_CodProd)
-        </td>
-        <td>
-            @Html.HiddenFor(modelItem => item.fk_Carrinho_CodCarrinho)
-        </td>
-      
-    </tr>
-}
-
-
-<div>
-    @Html.ActionLink("Retornar ao menu inicial", "Index", "Login")
+        </table>
+    </div>
 </div>
-</table>

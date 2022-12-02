@@ -83,12 +83,80 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Alterar" class="btn btn-default" />
+        <div class="container" id="conteinerCadUser">
+            <div class="row text-center" id="tittleCadUser">
+                <h2>Atualizar Produto</h2>
             </div>
+            <form id="formCadUser">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.CodProd)
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.ProdNome, htmlAttributes: new { @class = "control-label col-md-12", @id = "labelCadUser" })
+                        @Html.EditorFor(model => model.ProdNome, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ProdNome, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.ProdTipo, htmlAttributes: new { @class = "control-label col-md-12", @id = "labelCadUser" })
+                        @Html.EditorFor(model => model.ProdTipo, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ProdTipo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    @Html.LabelFor(model => model.ProdDesc, htmlAttributes: new { @class = "control-label col-md-12", @id = "paddingCadUser" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.ProdDesc, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ProdDesc, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.ProdValor, htmlAttributes: new { @class = "control-label col-md-12", @id = "labelCadUser" })
+                        @Html.EditorFor(model => model.ProdValor, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ProdValor, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.ProdFaixaEtaria, htmlAttributes: new { @class = "control-label col-md-12", @id = "labelCadUser" })
+                        @Html.EditorFor(model => model.ProdFaixaEtaria, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ProdFaixaEtaria, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.ProdAnoLanc, htmlAttributes: new { @class = "control-label col-md-12", @id = "labelCadUser" })
+                        @Html.EditorFor(model => model.ProdAnoLanc, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ProdAnoLanc, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.ProdQtnEstoque, htmlAttributes: new { @class = "control-label col-md-12", @id = "labelCadUser" })
+                        @Html.EditorFor(model => model.ProdQtnEstoque, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ProdQtnEstoque, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    @Html.LabelFor(model => model.ProdDesc, htmlAttributes: new { @class = "control-label col-md-12", @id = "paddingCadUser" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.ProdDesc, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ProdDesc, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.ImgCapa, htmlAttributes: new { @class = "control-label col-md-12", @id = "labelCadUser" })
+                        @Html.EditorFor(model => model.ImgCapa, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ImgCapa, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <input type="submit" value="Cadastrar" class="btn btn-default" id="btnCadUser" />
+                </div>
+            </form>
         </div>
-    </div>
 }
 
 <div>
