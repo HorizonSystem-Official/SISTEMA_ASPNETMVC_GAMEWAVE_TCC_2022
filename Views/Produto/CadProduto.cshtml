@@ -9,6 +9,7 @@
     @Html.AntiForgeryToken()
     
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.FK_Funcionario_IdFunc)
 
  
 <div class="container" id="conteinerCadUser">
@@ -65,24 +66,17 @@
             </div>
         </div>
         <div class="row">
-            @Html.LabelFor(model => model.ProdDesc, htmlAttributes: new { @class = "control-label col-md-12", @id = "paddingCadUser" })
-            <div class="col-md-12">
-                @Html.EditorFor(model => model.ProdDesc, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ProdDesc, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="row">
             <div class="col-md-6">
                 @Html.LabelFor(model => model.ImgCapa, htmlAttributes: new { @class = "control-label col-md-12", @id = "labelCadUser" })
-                @Html.EditorFor(model => model.ImgCapa, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.ImgCapa, new { htmlAttributes = new { @class = "form-control", @type = "file" }, })
                 @Html.ValidationMessageFor(model => model.ImgCapa, "", new { @class = "text-danger" })
             </div>
 
-            <div class="col-md-3">
+            @*<div class="col-md-3">
                 @Html.LabelFor(model => model.FK_Funcionario_IdFunc, htmlAttributes: new { @class = "control-label col-md-12", @id = "labelCadUser" })
                 @Html.EditorFor(model => model.FK_Funcionario_IdFunc, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.FK_Funcionario_IdFunc, "", new { @class = "text-danger" })
-            </div>
+            </div>*@
         </div>
         <div class="col-md-12">
             <input type="submit" value="Cadastrar" class="btn btn-default" id="btnCadUser" />

@@ -11,7 +11,6 @@ using TCC_Sistema_Cliente_Jogos_2022.Utils;
 using TCC_Sistema_Cliente_Jogos_2022.ViewModels;
 namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
 {
-    [CustomAuthorize("Cliente")]
     public class ComentarioController : Controller
     {
         // GET: Comentario
@@ -36,6 +35,14 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
                     conexao.Close();
             }
 
+            var verificaCPF = comentar.Fk_CpfCli;
+
+            if ( verificaCPF == null)
+            {
+                TempData["MensagemAviso"] = "Realize o login como Cliente para postar o comentário!";
+                return RedirectToAction("DetalhesProduto", "Produto", new { codprod = comentar.CodProd});
+            }
+
             var metodoscomentario = new Comentario();
 
             Comentario comentario = new Comentario
@@ -47,7 +54,7 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
 
             metodoscomentario.CadastrarComen(comentario);
             //APÓS CADASTRAR O OBJETO, SERÁ EMITIDO UM AVISO NA TELA INFORMANDO DO COMENTÁRIO ADICIONADO
-            TempData["MensagemAviso"] = "Comentário adicionado com sucesso!";
+            TempData["MensagemAviso"] = "Seu comentário foi adicionado com sucesso!";
             return RedirectToAction("MostraComentarios", "Comentario", new { codprod = comentario.Fk_CodProd});
         }
 

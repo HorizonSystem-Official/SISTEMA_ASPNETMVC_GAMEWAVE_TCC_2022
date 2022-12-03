@@ -138,6 +138,7 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Models
             //A DIFERENÇA É QUE VAI VERIFICAR SE IRÁ HAVER O REGISTRO ÚNICO OU NÃO
             if(leituraFuncioCPF.Read())
             {
+                TempFuncionario.IdFunc = Int32.Parse(leituraFuncioCPF["IdFunc"].ToString());
                 TempFuncionario.Nome = leituraFuncioCPF["NomeFunc"].ToString();
                 TempFuncionario.DataNasc = DateTime.Parse(leituraFuncioCPF["DataNasc"].ToString());
                 TempFuncionario.CPF = leituraFuncioCPF["CPF"].ToString();

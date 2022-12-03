@@ -11,6 +11,13 @@
     }
 </style>
 
+@if (TempData["MensagemAviso"] != null)
+{
+    <div class="alert alert-warning">
+        @TempData["MensagemAviso"]
+    </div>
+}
+
 <div class="container aling-center" id="boxProd">
     <div class="row">
         <div class="col-sm-6">
@@ -89,7 +96,7 @@
             </div>
 
             <div class="col-sm-10">
-                @Html.EditorFor(model => model.TxtComentario, new { htmlAttributes = new { @class = "form-control", @id = "inputComente", placeholder = "Escreva seu comentario..." } })          
+                @Html.EditorFor(model => model.TxtComentario, new { htmlAttributes = new { @class = "form-control", @id = "inputComente", placeholder = "Escreva seu comentario..." } })
                 @Html.ValidationMessageFor(model => model.TxtComentario, "", new { @class = "text-danger" })
             </div>
             <button class="btn  btn-block" id="BtnEnviaComente">Enviar</button>
@@ -97,10 +104,10 @@
     }
 </div>
 
-    <div>
-        <a href="@Url.Action("MostraComentarios", "Comentario", new { codprod = Model.CodProd})">
-            Ver os comentários sobre o produto
-        </a>
+<div>
+    <a href="@Url.Action("MostraComentarios", "Comentario", new { codprod = Model.CodProd})">
+        Ver os comentários sobre o produto
+    </a>
 
-    </div>
+</div>
 

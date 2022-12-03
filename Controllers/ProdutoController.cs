@@ -88,8 +88,8 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
         [HttpPost]
         public ActionResult CadProduto(Produto prod, HttpPostedFileBase imgcapa)
         {
-            if(ModelState.IsValid)
-            {
+            
+            
                 //ADAPTAÇÃO DA IMAGEM PARA O BANCO DE DADOS E ARMAZENAMENTO NA PASTA IMAGENSGAMES
                 if (imgcapa != null && imgcapa.ContentLength > 0)
                 {
@@ -121,7 +121,11 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
                     prod.ImgCapa = "/ImagensGames/Capa/capatemplate.png";
                 }
 
-            }
+            
+
+            var TempFuncionario = new Funcionario().ListaUMFuncio(User.Identity.Name);
+            prod.FK_Funcionario_IdFunc = TempFuncionario.IdFunc;
+
             //INSERE O FORMULÁRIO EM UM OBJETO PARA DEPOIS SER ADICIONADO POR UM MÉTODO DA CLASSE PRODUTO
             Produto produto = new Produto
             {

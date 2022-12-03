@@ -19,7 +19,7 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Models
         public string Nome { get; set; }
 
         [Display(Name = "Data de Nascimento")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/YYYY}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DataNasc { get; set; }
         public string CPF { get; set; }
         public string Senha { get; set; }
