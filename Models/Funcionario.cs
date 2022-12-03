@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Configuration;
 using System.Linq;
+using System.Security.Policy;
 using System.Web;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 using TCC_Sistema_Cliente_Jogos_2022.ViewModels;
+using BCrypt;
+using TCC_Sistema_Cliente_Jogos_2022.Utils;
+using Hash = TCC_Sistema_Cliente_Jogos_2022.Utils.Hash;
 
 namespace TCC_Sistema_Cliente_Jogos_2022.Models
 {
@@ -176,6 +180,55 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Models
             if (CPF == null)
                 CPF = "";
             return CPF;
+        }
+
+        public int VerificaFuncioIdExiste(string CPF, string senha)
+        {
+            conexao.Open();
+            cmd.CommandText = "select IdFunc, CPF, Senha from tbfuncionario where CPF = @CPF ";
+            cmd.Parameters.Add("@CPF", MySqlDbType.VarChar).Value = CPF;
+            cmd.Connection = conexao;
+
+            var leituraFuncCPF = cmd.ExecuteReader();
+            var TempFunc = new Funcionario();
+
+            if (leituraFuncCPF.Read())
+            {
+                TempFunc.IdFunc = int.Parse(leituraFuncCPF["IdFunc"].ToString());
+                TempFunc.Senha = leituraFuncCPF["Senha"].ToString();
+            }
+            leituraFuncCPF.Close();
+
+            conexao.Close();
+
+            if (Hash.CompareBCrypt(senha, TempFunc.Senha))
+                return TempFunc.IdFunc;
+            else
+                return 0;
+            
+        }
+
+        public bool isFunc(string CPF)
+        {
+            conexao.Open();
+            cmd.CommandText = "SELECT * FROM tbfuncionario WHERE CPF = @CPF;";
+            cmd.Parameters.Add("@CPF", MySqlDbType.VarChar).Value = CPF;
+            cmd.Connection = conexao;
+
+            var readFunc = cmd.ExecuteReader();
+
+            if (readFunc.Read())
+            {
+                readFunc.Close();
+                conexao.Close();
+                return true;
+            }
+            else
+            {
+                readFunc.Close();
+                conexao.Close();
+                return false;
+            }
         }
 
         //FIM MÉTODO DE LISTAGEM

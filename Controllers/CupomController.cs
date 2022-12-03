@@ -5,9 +5,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TCC_Sistema_Cliente_Jogos_2022.Models;
+using TCC_Sistema_Cliente_Jogos_2022.Utils;
 
 namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
 {
+    [CustomAuthorize("Funcionario")]
     public class CupomController : Controller
     {
         // GET: Cupom

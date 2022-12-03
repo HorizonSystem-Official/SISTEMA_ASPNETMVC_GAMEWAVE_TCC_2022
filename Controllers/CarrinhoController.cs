@@ -7,10 +7,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TCC_Sistema_Cliente_Jogos_2022.Models;
+using TCC_Sistema_Cliente_Jogos_2022.Utils;
 using TCC_Sistema_Cliente_Jogos_2022.ViewModels;
 
 namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
 {
+
     public class CarrinhoController : Controller
     {
         // GET: Carrinho
@@ -26,6 +28,7 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
         //    return View();
         //}
 
+        [CustomAuthorize("Cliente")]
         //É SELECIONADO UM CARRINHO DO CLIENTE CADASTRADO E TENHA FEITO O LOGIN COM SEU CPF
         public ActionResult VerCarrinhoIndex(string CPF)
         {
@@ -43,6 +46,7 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
             return View(carrinho);
         }
 
+        [CustomAuthorize("Cliente")]
         //MÉTODO PARA ADICIONAR UM ITEM AO CARRINHO
         [HttpGet]
         public ActionResult AdicionarAOCarrinho(int codprod)
@@ -58,6 +62,7 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
 
         }
 
+        [CustomAuthorize("Funcionario")]
         //FORMULÁRIO PARA REALIZAR A VENDA 
         public ActionResult FazerVenda()
         {
@@ -103,6 +108,7 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
         }
 
         //MÉTODO COM VIEW PARA VISUALIZAR A CONSULTA DE VENDAS SEM FILTRO
+        [CustomAuthorize("Funcionario")]
         public ActionResult ConsulVenda(string CPFCli)
         {
             MySqlConnection conexao = new MySqlConnection(ConfigurationManager.ConnectionStrings["conexaobd"].ConnectionString);

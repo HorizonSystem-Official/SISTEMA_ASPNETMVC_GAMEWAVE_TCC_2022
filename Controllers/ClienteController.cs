@@ -19,6 +19,8 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
     {
         // GET: Cliente
         //REALIZA A CONSULTA DOS CLIENTES SEM FILTRO
+        [CustomAuthorize("Funcionario")]
+
         public ActionResult ConsulCli(string CPFCli)
         {
             MySqlConnection conexao = new MySqlConnection(ConfigurationManager.ConnectionStrings["conexaobd"].ConnectionString);
@@ -82,7 +84,7 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
                 CPF = clienviewmodel.CPF,
                 Nome = clienviewmodel.NomeCliente,
                 DataNasc = clienviewmodel.DataNasc,
-                Senha = Hash.GerarHash(clienviewmodel.Senha),
+                Senha = Hash.GenerateBCrypt(clienviewmodel.Senha),
                 EmailCli = clienviewmodel.EmailCli,
                 TelCli = clienviewmodel.TelCli
             };
@@ -91,10 +93,10 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
 
             //EMITE UMA MENSAGEM PELO TEMPDATA DE SUCESSO E REDIRECIONA PARA A CONSULTA DELES
             TempData["MensagemAviso"] = "Cadastro do cliente feito com sucesso!";
-            return RedirectToAction("ConsulCli", "Cliente");
+            return RedirectToAction("Index", "Home");
         }
 
-
+        [CustomAuthorize("Funcionario")]
         //OCORRE O APAGAMENTO DO CLIENTE PELO SEU CPF
         public ActionResult DelCliente(string CPF)
         {
@@ -128,6 +130,7 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
 
 
         //FORMULÁRIO PARA ALTERAR O CLIENTE ESPECÍFICO POR UM PARÂMETRO
+        [CustomAuthorize("Funcionario")]
         [HttpGet]
         public ActionResult EdiCliente(string CPF)
         {

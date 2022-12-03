@@ -33,7 +33,7 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Utils
                     {
                         authorize = new Cliente().isCli(userName);
                     }
-                    else if (role == "Funcionário")
+                    else if (role == "Funcionario")
                     {
                         authorize = new Funcionario().isFunc(userName);
                     }

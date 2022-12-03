@@ -6,6 +6,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Configuration;
 using System.Linq;
 using System.Web;
+using System.Security.Policy;
+using Hash = TCC_Sistema_Cliente_Jogos_2022.Utils.Hash;
+
 
 namespace TCC_Sistema_Cliente_Jogos_2022.Models
 {
@@ -128,6 +131,25 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Models
             return TempCliente;
         }
 
+        public Cliente ListaUMClienteLOGIN(string CPF)
+        {
+            conexao.Open();
+            cmd.CommandText = "call spDadosCliente(@spCPF);";
+            cmd.Parameters.Add("@spCPF", MySqlDbType.VarChar).Value = CPF;
+            cmd.Connection = conexao;
+            var leituraClienCPF = cmd.ExecuteReader();
+            var TempCliente = new Cliente();
+
+            if (leituraClienCPF.Read())
+            {
+                TempCliente.CPF = leituraClienCPF["CPF"].ToString();
+                TempCliente.Senha = leituraClienCPF["Senha"].ToString();
+            }
+            leituraClienCPF.Close();
+            conexao.Close();
+            return TempCliente;
+        }
+
         //MÉTODO PARA VERIFICAR A EXISTÊNCIA DO CPF FORMULÁRIO POR UMA PROCEDURE
         public string verificaClienCPF(string vCPF)
         {
@@ -142,11 +164,61 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Models
             return CPF;
         }
 
-        //FIM DOS MÉTODOS LISTAGEM
+        public bool VerificaClienteExiste(string CPF, string senha)
+        {
+            conexao.Open();
+            cmd.CommandText = "select CPF, Senha from tbcliente where CPF = @CPF ";
+            cmd.Parameters.Add("@CPF", MySqlDbType.VarChar).Value = CPF;
+            cmd.Connection = conexao;
 
-        //ALTERAÇÃO DO CLIENTE, SEMELHANTE AO CADASTRO DO CLIENTE
+            var leituraClienCPF = cmd.ExecuteReader();
+            var TempCli = new Cliente();
 
-        public void AlterCli(Cliente cli)
+            if (leituraClienCPF.Read())
+            {
+                TempCli.CPF = leituraClienCPF["CPF"].ToString();
+                TempCli.Senha = leituraClienCPF["Senha"].ToString();
+            }
+            leituraClienCPF.Close();
+
+            conexao.Close();
+
+            if (Hash.CompareBCrypt(senha, TempCli.Senha))
+                return true;
+            else
+                return false;
+
+        }
+
+        public bool isCli(string CPF)
+        {
+            conexao.Open();
+            cmd.CommandText = "SELECT * FROM tbcliente WHERE CPF = @CPF;";
+            cmd.Parameters.Add("@CPF", MySqlDbType.VarChar).Value = CPF;
+            cmd.Connection = conexao;
+
+            var readCli = cmd.ExecuteReader();
+
+            if (readCli.Read())
+            {
+                readCli.Close();
+                conexao.Close();
+                return true;
+            }
+            else
+            {
+                readCli.Close();
+                conexao.Close();
+                return false;
+            }
+        }
+
+
+            //FIM DOS MÉTODOS LISTAGEM
+
+            //ALTERAÇÃO DO CLIENTE, SEMELHANTE AO CADASTRO DO CLIENTE
+
+            public void AlterCli(Cliente cli)
         {
             conexao.Open();
             cmd.CommandText = "call spUpdateCli(@spCPF, @spnome, @spdata, @spemail, @sptel)";

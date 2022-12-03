@@ -13,7 +13,7 @@ using System.Data;
 
 namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
 {
-    //[Authorize]
+    [CustomAuthorize("Funcionario")]
     public class FuncionarioController : Controller
     {
         
@@ -53,7 +53,7 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
                 Nome = funcio.NomeFunc,
                 DataNasc = funcio.DataNasc,
                 CPF = funcio.CPF,
-                Senha = Hash.GerarHash(funcio.Senha),
+                Senha = Hash.GenerateBCrypt(funcio.Senha),
                 Cargo = funcio.Cargo
             };
             funcionario.CriarFuncio(funcionario);

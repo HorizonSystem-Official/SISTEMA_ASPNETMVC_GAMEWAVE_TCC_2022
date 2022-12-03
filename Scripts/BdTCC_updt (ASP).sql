@@ -1,6 +1,8 @@
 create database bdTccJogosASP;
 use bdTccJogosASP;
 
+select*from tbcliente;
+
 CREATE TABLE tbFuncionario (
     IdFunc INT PRIMARY KEY auto_increment,
     NomeFunc Varchar(150) not null,
@@ -244,8 +246,9 @@ end $$
 delimiter $$    
 create procedure spDadosCliente(spCPF varchar(20))
 begin
-	select CPF, NomeCliente, DataNasc, EmailCli, TelCli from tbcliente where CPF=spCPF;
+	select CPF, NomeCliente, DataNasc, Senha, EmailCli, TelCli from tbcliente where CPF=spCPF;
 end $$
+
 
 ##dados func
 delimiter $$    

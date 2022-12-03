@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Games Wave</title>
+    <link rel="shortcut icon" type="image/x-icon" href="~/Image/Icone.ico" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    <!--ABAIXO É A NAVBAR-->
+    <nav class="navbar navbar-inverse" id="navBar">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".container-fluid" title="more options">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="@Url.Action("Index", "Home")"><img src="~/Image/logogameswave.png" alt="logo" id="logo"></a>
+        </div>
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="@Url.Action("Index", "Home")">Home</a>
+            </div>
+            <ul class="nav navbar-nav" id="herderNav">
+                <li><a href="#">Promoções</a></li>
+                <li><a href="#">Novos</a></li>
+                <li><a href="#">Lançamentos</a></li>
+
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <!--Barra de pesquisa-->
+                <div class="navbar-form navbar-left" id="formPesquisa">
+                    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+                    {
+                        <form>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="spPesquia" name="spPesquia" placeholder="Pesquise..." />
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" type="submit">
+                                        <i class="glyphicon glyphicon-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    }
+                </div>
+
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <!--Dropdown-->
+                    @*<li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Painel do funcionario<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li> @Html.ActionLink("Consultar Funcionarios", "ConsulFuncio", "Funcionario")</li>
+                            <li>@Html.ActionLink("Consultar Clientes", "ConsulCli", "Cliente")</li>
+                            <li>@Html.ActionLink("Consultar Produtos", "ConsulProduto", "Produto")</li>
+                            <li>@Html.ActionLink("Ver Carrinho", "VerCarrinhoIndex", "Carrinho")</li>
+                            <li>@Html.ActionLink("Fazer Venda", "FazerVenda", "Carrinho")</li>
+                            <li>@Html.ActionLink("Consultar Vendas", "ConsulVenda", "Carrinho")</li>
+                            <li>@Html.ActionLink("Consultar Cupons", "ConsulCupom", "Cupom")</li>
+                        </ul>
+                    </li>*@
+                    <li><a href="@Url.Action("Logout", "Login")"><img id="imgHeader" src="~/Image/log_out.png" alt="Carrinho"></a></li>
+                    <li><a href="@Url.Action("VerCarrinhoIndex", "Carrinho")"><img id="imgHeader" src="~/Image/shopping-cart (1).png" alt="Carrinho"></a></li>
+
+                }
+                else
+                {
+                    <li><a class="nav-link" href="@Url.Action("Login", "Login")"><img id="imgHeader" src="~/Image/user (1).png" alt="user"></a></li>
+
+                }
+            </ul>
+        </div>
+    </nav>
+    <!--ACIMA É A NAVBAR-->
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+
+    <!-- Site footer -->
+    <footer class="site-footer">
+        <div class="containerFooter">
+            <div class="row">
+                <div class="col-xs-6 col-md-5" id="descFooter">
+                    <h6>Nossa empresa</h6>
+                    <p class="text-justify">Fundada em 2022, aspiramos dar uma melhor interface e experiencia para nossos amados clientes.  </p>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                    <h6>Categorias</h6>
+                    <ul class="footer-links">
+                        <li><a href="@Url.Action("Index", "Login")">Home</a></li>
+                        <li><a href="@Url.Action("Index", "Login")">Sobre</a></li>
+                        <li><a href="@Url.Action("Login", "Login")">Login</a></li>
+                        <li><a href="@Url.Action("Index", "Login")">Contato</a></li>
+                        <li><a href="@Url.Action("Index", "Login")">Categorias</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                    <h6>Entre em contato</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Rua Ausgusta, 69, São Paulo</a></li>
+                        <li><a href="#"> game.wave@gmail.com </a></li>
+                        <li><a href="#">(11) 968425-7725</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="containerFooter">
+            <div class="row">
+                <div class="col-md-8 col-sm-6 col-xs-12">
+                    <p class="copyright-text">
+                        Copyright &copy;  @DateTime.Now.Year All Rights Reserved by
+                        <a href="#">DEVELOPED BY HORIZON SYSTEMS LTDA.</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+

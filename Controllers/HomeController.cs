@@ -7,19 +7,59 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TCC_Sistema_Cliente_Jogos_2022.Models;
+using TCC_Sistema_Cliente_Jogos_2022.Utils;
 
 namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
 {
-    //[Authorize]
+    [CustomAuthorize("Cliente")]
     public class HomeController : Controller
     {
-        //INATIVO
-        public ActionResult Index()
+        
+        public ActionResult Index(string spPesquia, string spProdTipo)
         {
-            return View();
+            MySqlConnection conexao = new MySqlConnection(ConfigurationManager.ConnectionStrings["conexaobd"].ConnectionString);
+            try
+            {
+                conexao.Open();
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("Error", new { mensagem = e.Message });
+            }
+            finally
+            {
+                if (conexao.State == ConnectionState.Open)
+                    conexao.Close();
+            }
+
+            var produ = new Produto();
+
+            //if (spPesquia == null && spProdTipo == null)
+            //{
+
+
+            //}
+            if (spPesquia != null && spProdTipo == null)
+            {
+                var MostrarProdPeloNome = produ.ListarProdPeloNome(spPesquia);
+
+                return View(MostrarProdPeloNome);
+            }
+            if (spPesquia == null && spProdTipo != null)
+            {
+                var MostrarProdPeloTipo = produ.ListarProdPeloTipo(spProdTipo);
+
+                return View(MostrarProdPeloTipo);
+            }
+            else
+            {
+                var MostrarProdTodos = produ.ListarProd();
+                return View(MostrarProdTodos);
+            }
+
         }
 
-        
+
 
     }
 }
