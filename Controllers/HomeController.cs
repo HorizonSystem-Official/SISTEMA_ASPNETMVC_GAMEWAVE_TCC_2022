@@ -11,7 +11,7 @@ using TCC_Sistema_Cliente_Jogos_2022.Utils;
 
 namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
 {
-    [CustomAuthorize("Cliente")]
+    
     public class HomeController : Controller
     {
         

@@ -13,7 +13,6 @@ using System.Data;
 
 namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
 {
-    [CustomAuthorize("Funcionario")]
     public class FuncionarioController : Controller
     {
         
@@ -95,7 +94,9 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
         }
 
         //COM O PARÂMETRO ID do funcionário enviado, É APAGADO O FUNCIONÁRIO SELECIONADO
-        
+
+        [CustomAuthorize("Funcionario")]
+
         public ActionResult DelFuncio(int IdFunc)
         {
             MySqlConnection conexao = new MySqlConnection(ConfigurationManager.ConnectionStrings["conexaobd"].ConnectionString);
@@ -127,6 +128,8 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
 
         //É PEGO O CPF DO FUNCIONÁRIO PARA FAZER AS ALTERAÇÕES
         [HttpGet]
+        [CustomAuthorize("Funcionario")]
+
         public ActionResult EdiFuncio(string CPF)
         {
             

@@ -20,7 +20,6 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
         // GET: Cliente
         //REALIZA A CONSULTA DOS CLIENTES SEM FILTRO
         [CustomAuthorize("Funcionario")]
-
         public ActionResult ConsulCli(string CPFCli)
         {
             MySqlConnection conexao = new MySqlConnection(ConfigurationManager.ConnectionStrings["conexaobd"].ConnectionString);

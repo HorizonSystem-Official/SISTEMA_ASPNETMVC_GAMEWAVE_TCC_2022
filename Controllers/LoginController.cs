@@ -208,7 +208,7 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
         //MÉTODO PARA DAR LOGOUT DIRETO
         public ActionResult Logout()
         {
-            Request.GetOwinContext().Authentication.SignOut("AppAplicationCookie");
+            Request.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Login", "Login");
         }
 
