@@ -439,7 +439,6 @@ begin
 	delete from tbFuncionario where IdFunc = spIdFunc;
 end $$
 
-drop procedure spDeleteFunc;
 
 delimiter $$
 create procedure spDeleteProd(spCodProd int)
