@@ -271,6 +271,7 @@ begin
 	select IdFunc, NomeFunc, DataNasc, CPF, Cargo from tbFuncionario where CPF=spCPFFunc;
 end $$
 
+select * from tbfuncionario;
 ##itens do carrinho
 delimiter $$    
 create procedure spMostraItens(spCPF varchar(20))
@@ -432,13 +433,18 @@ end $$
 delimiter $$
 create procedure spDeleteFunc(spIdFunc int)
 begin
+	select CodProd into @CodProd from tbproduto where fk_Funcionario_IdFunc = spIdFunc;
+	delete from tbcomentarios where Fk_CodProd = @CodProd;
+    delete from tbproduto where Fk_CodProd = @CodProd;
 	delete from tbFuncionario where IdFunc = spIdFunc;
 end $$
 
+drop procedure spDeleteFunc;
 
 delimiter $$
 create procedure spDeleteProd(spCodProd int)
 begin
+	delete from tbcomentarios where Fk_CodProd = spCodProd;
 	delete from tbProduto where CodProd = spCodProd;
 end $$
 

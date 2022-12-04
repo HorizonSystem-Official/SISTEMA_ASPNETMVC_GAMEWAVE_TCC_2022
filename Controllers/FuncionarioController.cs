@@ -96,7 +96,7 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
         //COM O PARÂMETRO ID do funcionário enviado, É APAGADO O FUNCIONÁRIO SELECIONADO
 
         [CustomAuthorize("Funcionario")]
-
+        
         public ActionResult DelFuncio(int IdFunc)
         {
             MySqlConnection conexao = new MySqlConnection(ConfigurationManager.ConnectionStrings["conexaobd"].ConnectionString);

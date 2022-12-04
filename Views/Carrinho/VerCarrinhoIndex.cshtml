@@ -2,10 +2,28 @@
 
 @{
     ViewBag.Title = "VerCarrinhoIndex";
+    Layout = "~/Views/Shared/_Layout_Cliente.cshtml";
 }
 
+<style>
+    button {
+        font-family: "Roboto", sans-serif;
+        text-transform: uppercase;
+        outline: 0;
+        background: #4CAF50;
+        width: 100%;
+        border: 0;
+        padding: 15px;
+        color: #FFFFFF;
+        font-size: 14px;
+        -webkit-transition: all 0.3 ease;
+        transition: all 0.3 ease;
+        cursor: pointer;
+    }
+</style>
+
 <h2>Seu Carrinho</h2>
-<a href="@Url.Action("Index", "Login")"><img src="~/Image/left.png" alt="volta" class="marginL5" id="icon" /> <span>voltar</span></a>
+<a href="@Url.Action("Index", "Home")"><img src="~/Image/left.png" alt="volta" class="marginL5" id="icon" /> <span>voltar</span></a>
 
 <div class="container">
     <div class="table-wrapper">
@@ -54,12 +72,18 @@
                     <td>
                         @Html.HiddenFor(modelItem => item.fk_Carrinho_CodCarrinho)
                     </td>
-                    <td>                
+                    @*<td>                
                         <a href="@Url.Action("DelCupom", new { fk_Produto_CodProd = item.fk_Produto_CodProd }) class="delete" data-toggle="modal"><img id="icon" src="~/Image/cruzado.png" alt="Delete" /></a>
-                    </td>
+                    </td>*@
                 </tr>
             }
 
         </table>
     </div>
+    @if (TempData["ConfirmaProduto"] != null)
+     { 
+        <div>
+            <button onclick="location.href='@Url.Action("FazerVenda", "Carrinho")'">Fazer Compra</button>
+        </div>
+    }
 </div>

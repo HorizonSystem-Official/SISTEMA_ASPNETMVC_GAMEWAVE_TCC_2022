@@ -139,7 +139,7 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("SenhaLogin", "CPF ou Login inválidos!");
+                    ModelState.AddModelError("SenhaLogin", "CPF ou Senha inválidos!");
                 }
 
             }

@@ -5,12 +5,13 @@
 }
 
 <h2>Editar esse Funcionário</h2>
+<a href="@Url.Action("ConsulFuncio")"><img src="~/Image/left.png" alt="volta" class="marginL5" id="icon" /> <span>voltar</span></a>
 
 
 @using (Html.BeginForm("EdiFuncio", "Funcionario", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="container" id="conteinerCadUser">
         <div class="row text-center" id="tittleCadUser">
             <h2>Atualizar Funcionário</h2>
@@ -44,12 +45,12 @@
             </div>
         </form>
     </div>
-    }
+}
 
-    <div>
-        @Html.ActionLink("Retornar a listagem dos funcionários", "ConsulFuncio")
-    </div>
+<div>
+    @Html.ActionLink("Retornar a listagem dos funcionários", "ConsulFuncio")
+</div>
 
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

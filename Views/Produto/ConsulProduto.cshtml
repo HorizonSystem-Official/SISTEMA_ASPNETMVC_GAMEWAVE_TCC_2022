@@ -42,7 +42,12 @@
                         </p>
                     </td>
                     <td>
-                        <a class="btn btn-lg btn-block" id="btnAddCar" href="@Url.Action("DetalhesProduto", new { codprod = item.CodProd })">Detalhes</a>
+                        <a class="btn btn-lg btn-block" id="btnAddCar" href="@Url.Action("DetalhesProdutoFuncionario", new { codprod = item.CodProd })">Detalhes</a>
+                    </td>
+
+                    <td>
+                        <a href="@Url.Action("EdiProduto", new { codprod = item.CodProd })" class="edit" data-toggle="modal"><img id="icon" src="~/Image/editar.png" alt="Altera" /></a>
+                        <a href="@Url.Action("DelProduto", new { codprod = item.CodProd })" class="delete" data-toggle="modal"><img id="icon" src="~/Image/cruzado.png" alt="Delete" /></a>
                     </td>
                 </tr>
             </div>

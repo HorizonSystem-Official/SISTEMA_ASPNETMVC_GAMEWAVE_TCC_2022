@@ -1,8 +1,7 @@
-﻿@*@model TCC_Sistema_Cliente_Jogos_2022.Models.Produto*@
-@model TCC_Sistema_Cliente_Jogos_2022.ViewModels.DetalhesProdutoEComentarios
+﻿@model TCC_Sistema_Cliente_Jogos_2022.ViewModels.DetalhesProdutoEComentarios
+
 @{
-    ViewBag.Title = "DetalhesProduto";
-    Layout = "~/Views/Shared/_Layout_Cliente.cshtml";
+    ViewBag.Title = "DetalhesProdutoFuncionario";
 }
 
 <style>
@@ -11,8 +10,6 @@
         height: 34px;
     }
 </style>
-<a href="@Url.Action("Index", "Home")"><img src="~/Image/left.png" alt="volta" class="marginL5" id="icon" /> <span>voltar</span></a>
-
 
 @if (TempData["MensagemAviso"] != null)
 {
@@ -20,7 +17,6 @@
         @TempData["MensagemAviso"]
     </div>
 }
-
 
 <div class="container aling-center" id="boxProd">
     <div class="row">
@@ -75,37 +71,13 @@
                 <h6 id="textProd"> @Html.DisplayFor(model => model.ProdDesc)</h6>
             </div>
 
-            <div class="row">
+            @*<div class="row">
                 <h3 id="price">R$ @Html.DisplayFor(model => model.ProdValor)</h3>
                 <a href="@Url.Action("AdicionarAOCarrinho", "Carrinho", new { codprod = Model.CodProd})" id="btnAddCar" class="btn">add car</a>
-            </div>
+            </div>*@
 
         </div>
     </div>
-</div>
-
-<div class="container aling-center" id="boxComente">
-    @using (Html.BeginForm("CadComentario", "Comentario", FormMethod.Post))
-    {
-        @Html.AntiForgeryToken()
-
-        <h4>Poste aqui seu comentário</h4>
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Fk_CpfCli)
-        @Html.HiddenFor(model => model.CodProd/*, new { Value = Html.DisplayFor(model => model.CodProd)}*/)
-
-        <div class="row marginT5">
-            <div class="col-sm-2">
-                <img src="http://picsum.photos/50" alt="" class="img-circle">
-            </div>
-
-            <div class="col-sm-10">
-                @Html.EditorFor(model => model.TxtComentario, new { htmlAttributes = new { @class = "form-control", @id = "inputComente", placeholder = "Escreva seu comentario..." } })
-                @Html.ValidationMessageFor(model => model.TxtComentario, "", new { @class = "text-danger" })
-            </div>
-            <button class="btn  btn-block" id="BtnEnviaComente">Enviar</button>
-        </div>
-    }
 </div>
 
 <div>
@@ -114,4 +86,3 @@
     </a>
 
 </div>
-

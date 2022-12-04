@@ -11,6 +11,7 @@
     </div>
 }
 <h2>Consulta dos Clientes</h2>
+<a href="@Url.Action("Index", "Login")"><img src="~/Image/left.png" alt="volta" class="marginL5" id="icon" /> <span>voltar</span></a>
 @using (Html.BeginForm("ConsulCli", "Cliente", FormMethod.Get))
 {
     
@@ -74,7 +75,7 @@
                     </td>
                     <td>
                         <a href="@Url.Action("EdiCliente", new { CPF = item.CPF })" class="edit" data-toggle="modal"><img id="icon" src="~/Image/editar.png" alt="Altera" /></a>
-                        <a href="@Url.Action("DelCliente", new { CPF = item.CPF}) class="delete" data-toggle="modal"><img id="icon" src="~/Image/cruzado.png" alt="Delete" /></a>
+                        <a href="@Url.Action("DelCliente", new { CPF = item.CPF})" class="delete" data-toggle="modal"><img id="icon" src="~/Image/cruzado.png" alt="Delete" /></a>
                     </td>
                 </tr>
             }

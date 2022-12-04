@@ -303,6 +303,7 @@
     <Content Include="Views\Carrinho\ConsulVenda.cshtml" />
     <Content Include="Views\Shared\_Layout_Acesso_Restrito.cshtml" />
     <Content Include="Views\Shared\_Layout_Cliente.cshtml" />
+    <Content Include="Views\Produto\DetalhesProdutoFuncionario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

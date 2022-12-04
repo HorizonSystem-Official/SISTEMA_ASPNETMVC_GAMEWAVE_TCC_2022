@@ -15,7 +15,7 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
     {
         // GET: Comentario
 
-        //REALIZA O CADASTRO DIRETO DO CUPOM E REDIRECIONA  PARA A PÁGINA DOS COMENTÁRIOS
+        //REALIZA O CADASTRO DIRETO DO COMENTÁRIOS E REDIRECIONA  PARA A PÁGINA DOS COMENTÁRIOS
         [HttpPost]
         //[ValidateInput(false)]
         public ActionResult CadComentario(DetalhesProdutoEComentarios comentar)
@@ -35,9 +35,11 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
                     conexao.Close();
             }
 
-            var verificaCPF = comentar.Fk_CpfCli;
+            var TempCliente = new Cliente().ListaUMCliente(User.Identity.Name);
 
-            if ( verificaCPF == null)
+            comentar.Fk_CpfCli = TempCliente.CPF;
+
+            if ( TempCliente.CPF == null)
             {
                 TempData["MensagemAviso"] = "Realize o login como Cliente para postar o comentário!";
                 return RedirectToAction("DetalhesProduto", "Produto", new { codprod = comentar.CodProd});
@@ -78,6 +80,8 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
                     conexao.Close();
             }
 
+            var TempProduto = new Produto().ListaUMProdutoID(codprod);
+            ViewBag.CodProduto = TempProduto.CodProd; 
             var ListaComentarios = new Comentario().ListarTodosComentarios(codprod);
 
             return View(ListaComentarios);

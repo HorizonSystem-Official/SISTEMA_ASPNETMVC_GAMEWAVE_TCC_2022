@@ -287,12 +287,12 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Models
         }
 
         //MÉTODO PARA APAGAR O PRODUTO, O PROCESSO É SEMELHANTE AO CAD VOID, PORÉM HÁ PARÂMETRO VINDO PELA URL
-        public void DelProduto(int codprod, string CPFCliente)
+        public void DelProduto(int codprod)
         {
             conexao.Open();
-            cmd.CommandText = "call spDeleteProd2(@spCodProd, @spCPF);";
+            cmd.CommandText = "call spDeleteProd(@spCodProd);";
             cmd.Parameters.Add("@spCodProd", MySqlDbType.Int16).Value = codprod;
-            cmd.Parameters.Add("@spCPF", MySqlDbType.VarChar).Value = CPFCliente;
+            //cmd.Parameters.Add("@spCPF", MySqlDbType.VarChar).Value = CPFCliente;
 
             cmd.Connection = conexao;
             cmd.ExecuteNonQuery();

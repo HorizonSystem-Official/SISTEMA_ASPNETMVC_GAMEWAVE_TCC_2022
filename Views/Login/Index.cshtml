@@ -95,7 +95,7 @@
                             @Html.HiddenFor(modelItem => item.CodProd) <br />
                         </td>
                         <td>
-                            <a href="@Url.Action("DetalhesProduto", "Produto", new { codprod = item.CodProd})">
+                            <a href="@Url.Action("DetalhesProdutoFuncionario", "Produto", new { codprod = item.CodProd})">
                                 <img src="@Url.Content(item.ImgCapa)" width="150px" height="150px" />
                             </a>
                         </td>

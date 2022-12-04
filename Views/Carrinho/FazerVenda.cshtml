@@ -2,10 +2,11 @@
 
 @{
     ViewBag.Title = "FazerVenda";
+    Layout = "~/Views/Shared/_Layout_Cliente.cshtml";
 }
 
 <h2>Realizar uma venda</h2>
-<a href="@Url.Action("Index", "Login")"><img src="~/Image/left.png" alt="volta" class="marginL5" id="icon" /> <span>voltar</span></a>
+<a href="@Url.Action("Index", "Home")"><img src="~/Image/left.png" alt="volta" class="marginL5" id="icon" /> <span>voltar</span></a>
 @using (Html.BeginForm("FazerVenda", "Carrinho", FormMethod.Post, null))
 {
     @Html.AntiForgeryToken()

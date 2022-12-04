@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "MostraComentarios";
+    Layout = "~/Views/Shared/_Layout_Cliente.cshtml";
+
 }
 
 @if (TempData["MensagemAviso"] != null)
@@ -19,15 +21,18 @@
         <td>
             <b>@Html.DisplayFor(modelItem => item.Nome)</b> Postou: <br />
         </td>
-
+        
         <td>
             @Html.DisplayFor(modelItem => item.TxtComentario)
         </td>
         <br />
-
+        <br />
     </tr>
 }
 
-<div>
-    @Html.ActionLink("Retornar ao menu inicial", "Index", "Login")
-</div>
+@*<div>
+    @Html.ActionLink("Retornar ao menu inicial", "Index", "Home")
+</div>*@
+<a href="@Url.Action("DetalhesProduto", "Produto", new { codprod = ViewBag.CodProduto})">
+    Retornar ao produto escolhido
+</a>

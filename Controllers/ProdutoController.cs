@@ -241,7 +241,7 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
 
      
         //MÉTODO DE APAGAR O PRODUTO, É UTILIZADO O CPF PARA BUSCAR REGISTROS EM OUTRAS TABELAS COMO FK
-        public ActionResult DelProduto(int codprod, string CPFCliente)
+        public ActionResult DelProduto(int codprod/*, string CPFCliente*/)
         {
             MySqlConnection conexao = new MySqlConnection(ConfigurationManager.ConnectionStrings["conexaobd"].ConnectionString);
             try
@@ -258,9 +258,11 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
                     conexao.Close();
             }
 
+            
+
             var produto = new Produto();
 
-            produto.DelProduto(codprod, CPFCliente);
+            produto.DelProduto(codprod);
             /*
             FuncionarioViewModel funcionario = new FuncionarioViewModel();
             funcionario.CPF = CPF;
@@ -304,7 +306,36 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
             return View(produto);
         }
 
-        
-        
+        public ActionResult DetalhesProdutoFuncionario(int codprod)
+        {
+            MySqlConnection conexao = new MySqlConnection(ConfigurationManager.ConnectionStrings["conexaobd"].ConnectionString);
+            try
+            {
+                conexao.Open();
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("Error", new { mensagem = e.Message });
+            }
+            finally
+            {
+                if (conexao.State == ConnectionState.Open)
+                    conexao.Close();
+            }
+
+            var metodoproduto = new Produto();
+
+            //MÉTODO VAI RECEBER O PARÂMETRO ID DO PRODUTO
+            var produto = metodoproduto.ListaDetalheProdutoID(codprod);
+
+            if (produto == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(produto);
+        }
+
+
     }
 }

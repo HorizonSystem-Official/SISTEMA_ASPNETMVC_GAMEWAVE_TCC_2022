@@ -60,14 +60,14 @@
                             <li> @Html.ActionLink("Consultar Funcionarios", "ConsulFuncio", "Funcionario")</li>
                             <li>@Html.ActionLink("Consultar Clientes", "ConsulCli", "Cliente")</li>
                             <li>@Html.ActionLink("Consultar Produtos", "ConsulProduto", "Produto")</li>
-                            <li>@Html.ActionLink("Ver Carrinho", "VerCarrinhoIndex", "Carrinho")</li>
-                            <li>@Html.ActionLink("Fazer Venda", "FazerVenda", "Carrinho")</li>
+                            @*<li>@Html.ActionLink("Ver Carrinho", "VerCarrinhoIndex", "Carrinho")</li>
+                            <li>@Html.ActionLink("Fazer Venda", "FazerVenda", "Carrinho")</li>*@
                             <li>@Html.ActionLink("Consultar Vendas", "ConsulVenda", "Carrinho")</li>
                             <li>@Html.ActionLink("Consultar Cupons", "ConsulCupom", "Cupom")</li>
                         </ul>
                    </li>
                 <li><a href="@Url.Action("Logout", "Login")"><img id="imgHeader" src="~/Image/log_out.png" alt="Carrinho"></a></li>
-                <li><a href="@Url.Action("VerCarrinhoIndex", "Carrinho")"><img id="imgHeader" src="~/Image/shopping-cart (1).png" alt="Carrinho"></a></li>
+                @*<li><a href="@Url.Action("VerCarrinhoIndex", "Carrinho")"><img id="imgHeader" src="~/Image/shopping-cart (1).png" alt="Carrinho"></a></li>*@
 
             }
             else

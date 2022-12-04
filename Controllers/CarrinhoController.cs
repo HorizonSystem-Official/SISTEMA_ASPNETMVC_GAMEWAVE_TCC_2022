@@ -58,11 +58,12 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
             itemcar.ColocarItemCarrinho(codprod, CPFCliente);
 
             TempData["MensagemAviso"] = "Produto colocado com sucesso no carrinho! Acesse o link 'Ver Carrinho' para visualizar o carrinho";
-           return RedirectToAction("Index", "Login");
+            TempData["ConfirmaProduto"] = "Confirmado";
+           return RedirectToAction("Index", "Home");
 
         }
 
-        [CustomAuthorize("Funcionario")]
+        [CustomAuthorize("Cliente")]
         //FORMULÁRIO PARA REALIZAR A VENDA 
         public ActionResult FazerVenda()
         {
@@ -103,8 +104,9 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
             venda.FazerVenda(venda);
 
             //FAZ O TEMPDATA NOTIFICAR O USUÁRIO PARA A VENDA FEITA E REDIRECIONAR ELE PARA A CONSULTA DAS VENDAS
-            TempData["MensagemAviso"] = "Cadastro da venda feito com sucesso!";
-            return RedirectToAction("ConsulVenda", "Carrinho");
+            TempData["MensagemAviso"] = "Compra feita com sucesso!";
+            TempData["ConfirmaProduto"] = null;
+            return RedirectToAction("Index", "Home");
         }
 
         //MÉTODO COM VIEW PARA VISUALIZAR A CONSULTA DE VENDAS SEM FILTRO
