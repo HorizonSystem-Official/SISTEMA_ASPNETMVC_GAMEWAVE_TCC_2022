@@ -1,0 +1,27 @@
+-Primeiro, abra a pasta do projeto SCRIPTS e execute o arquivo BdTCC_updt(ASP) no seu banco de dados local.
+
+-Após executar, procure a view do script "vm_Comentarios" no banco e execute novamente. Caso já exista ou é criado, vá para o próximo passo
+
+-Após abrir a pasta do projeto no visual studio por meio do "TCC_Sistema_Cliente_Jogos_2022.sln", vá para o Web.config e dentro da connectionStrings
+sua senha do banco de dados local em "password ="
+
+-Para executar o sistema, utilize a view Home da HomeController e execute com o botão "ISS EXPRESS"
+
+Para utilizar o sistema como CLIENTE:
+
+-Vá na tela Login(icone de um boneco na navbar)
+-Clique em "Cadastrar-se"
+-Faça um cadastro como cliente
+-Volte a tela de login e utilize os dados criados para acessar o sistema como CLIENTE pelo botão "Entrar"
+-Para finalizar o uso do cliente, use o logout(icone de uma porta como saída na navbar)
+
+Para utilizar o sistema como FUNCIONÁRIO:
+-Inicie o sistema na View ConsulFuncio da FuncionarioController pelo "ISS EXPRESS"
+-Faça um cadastro de um novo funcionário
+-Vá na tela Login(icone de um boneco na navbar)
+-Coloque os dados criados no campo para fazer o login pelo botão "Entrar"
+-Para finalizar o uso do cliente, use o logout(icone de uma porta como saída na navbar)
+
+OBS:
+-CLIENTE possui as funções exclusivas: Fazer comentários em produtos escolhidos, colocar produtos em um carrinho e fazer uma compra
+-FUNCIONÁRIO possui as funções exclusivas: Consultar diversas listas trazidas do banco de dados (Produto, Cliente, Funcionário, Cupom, VENDA), sendo possível fazer adições, alterações e exclusões
