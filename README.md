@@ -1,15 +1,31 @@
-# GUIA PARA O FUNCIONAMENTO DO SISTEMA
+# SISTEMA ASP.NET do cliente GAME WAVE (fictício)
 
--Dentro da Pasta Scripts, deve executar o script "BdTCC_updt (ASP)" no mySql
+##Descrição sobre o Projeto
+<p> É um projeto para o TCC do curso Desenvolvimento de Sistemas (DS) Integrado ao Ensino Médio da escola ETEC PROFESSOR BASILIDES DE GODOY.</p> <br>
+<p>O tema proposto foi de uma loja de games online que necessitava os serviços da empresa Horizon System (fictícia) para desenvolver softwares que ajudasse a loja, sendo um desses softwares um sistema E-commerce</p>
 
--Após abrir o projeto no visual studio, vá em Web.config do próprio projeto, procure a <connectionString> com nome "conexaobd" insira no campo vazio o password do banco de dados
+##Características do projeto
+-Em Back-End: Utilizado o framework ASP.NET Web Application (.NET Framework), com as linguagens C# e .NET
+-Em Front-end: HTML5, CSS3 e JavaScript
+-O Script do banco foi feito no MySql
+-Bibliotecas utilizadas em maior destaque: BCrypt, para criptografia de senhas; Owin, para base de autenticações; Microsoft.AspNet.Identity.Core, auxílio para o Owin nos níveis de acesso; MySql.Data, na qual permite o uso de funções do banco para realizar a conexão entre o sistema e o MySql.
 
--Execute Primeiro a Index(View) da controller Login, vá para a aba consulta funcionários e faça um novo cadastro dele
+##Páginas(Views) do Sistema (Demonstração)
 
--Após isso, use o link "Fazer Login" para fazer a autenticação
+<center>![image](https://user-images.githubusercontent.com/82453465/205519194-8a632418-7e35-4ae5-9dca-44c503c2ef7c.png)</center>
+<center>![image](https://user-images.githubusercontent.com/82453465/205519223-6348df79-d3d5-4d06-8f86-15b8caf5295a.png)</center>
+<center>![image](https://user-images.githubusercontent.com/82453465/205519293-a5406fac-bdcf-4600-a605-4c8a840d613d.png)</center>
+<center>![image](https://user-images.githubusercontent.com/82453465/205519401-3da39e8d-77ea-4b0c-977e-682f9005322a.png)</center>
+<center>![image](https://user-images.githubusercontent.com/82453465/205519493-97ce6f2f-ed1f-4f87-8112-bb4640c7c461.png)</center>
 
--Após autenticado, faça o cadastro de um novo cliente pela "Consultar Clientes" e utilize o MESMO CPF que o Funcionário cadastrado para realizar o resto das funções
+##Contribuidores
+-<a href="https://github.com/GuiMatheus1313">Guilherme Matheus de Jesus de Araujo</a> - Desenvolvedor Back-End <br>
+-<a href="https://github.com/LucasBara-dising">Lucas de Lima Barauna</a> - Desenvolvedor Front-End <br>
+-<a href="https://github.com/JoaoPauloAa">João Paulo Almeida Aurelio</a> - Desenvolvedor Back-End <br>
+-<a href="https://github.com/OOK7">Pedro Ribeiro Di Muzio</a> - Desenvolvedor Front-End e Banco <br>
+-<a href="https://github.com/DiegoAndrade06">Diego de Oliveira Andrade</a> - Desenvolvedor Front-End e Banco <br>
+-<a href="https://github.com/SayArthur">Arthur Bernal Moreno Ferreira</a> - Desenvolvedor Front-End (Wireframe do Sistema) <br>
+-<a href="https://github.com/carlosfreire15">Carlos Eduardo Martins Freire</a> - Desenvolvedor Front-End (Wireframe do Sistema) <br>
 
--Depois de cadastrar o cliente, pode realizar o resto das funções do sistema  (AVISO: Sempre marque o código do item quando realizar um formulário, indo rapidamente em sua consulta pela aba superior, para evitar erro no sistema")
-
--Caso deseja fazer o teste com outro cliente, faça o logout pelo link "Sair" e repita o 2º e 3º processo listado
+##Como instalar/usar o sistema
+<p> Baixe o projeto como .Zip no GitHub e abra o arquivo "leia-me.txt" dentro da pasta do projeto para seguir as intruções para usar o sistema
