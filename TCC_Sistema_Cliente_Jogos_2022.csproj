@@ -280,7 +280,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Shared\_Layout_navbar_footer.cshtml" />
+    <Content Include="Views\Shared\_Layout_Login_navbar.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Funcionario\CadInsert.cshtml" />

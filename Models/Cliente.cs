@@ -143,6 +143,7 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Models
             if (leituraClienCPF.Read())
             {
                 TempCliente.CPF = leituraClienCPF["CPF"].ToString();
+                TempCliente.Nome = leituraClienCPF["NomeCliente"].ToString();
                 TempCliente.Senha = leituraClienCPF["Senha"].ToString();
             }
             leituraClienCPF.Close();

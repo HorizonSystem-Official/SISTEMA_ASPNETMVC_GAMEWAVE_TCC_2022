@@ -42,7 +42,7 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
             if (spPesquia != null && spProdTipo == null)
             {
                 var MostrarProdPeloNome = produ.ListarProdPeloNome(spPesquia);
-
+                TempData["Pesquisa"] = spPesquia;
                 return View(MostrarProdPeloNome);
             }
             if (spPesquia == null && spProdTipo != null)
@@ -57,6 +57,12 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
                 return View(MostrarProdTodos);
             }
 
+        }
+
+        public ActionResult Error(string mensagem)
+        {
+            ViewBag.error = "Entre em contato com um profissional TI e passe a seguinte mensagem: {" + mensagem + "}";
+            return View();
         }
 
 

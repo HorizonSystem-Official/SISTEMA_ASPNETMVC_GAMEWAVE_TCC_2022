@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout_Cliente.cshtml";
 }
 
-<h2>Realizar uma venda</h2>
+<h2>Realizar uma Compra do Carrinho</h2>
 <a href="@Url.Action("Index", "Home")"><img src="~/Image/left.png" alt="volta" class="marginL5" id="icon" /> <span>voltar</span></a>
 @using (Html.BeginForm("FazerVenda", "Carrinho", FormMethod.Post, null))
 {
@@ -31,7 +31,7 @@
             </div>
             
             <div class="col-md-12">
-                <input type="submit" value="Efeutuar" class="btn btn-default" id="btnCadUser" />
+                <input type="submit" value="Efetuar" class="btn btn-default" id="btnCadUser" />
             </div>
         </form>
         </div>

@@ -51,6 +51,8 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
             {
                 var MostrarProdPeloNome = produ.ListarProdPeloNome(spPesquia);
 
+                TempData["Pesquisa"] = spPesquia;
+
                 return View(MostrarProdPeloNome);
             } if (spPesquia == null && spProdTipo != null)
             {
@@ -98,7 +100,7 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
         }
 
 
-        //UTILIZADO COMO GUIA DA URL ENQUANTO O USUÁRIO ESTIVER LOGADO
+        
         [HttpPost]
         public ActionResult Login(LoginViewModel loginviewmodel)
         {
@@ -116,6 +118,7 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
             {
                 var leituraFunc = new Funcionario().ListaUMFuncioLOGIN(loginviewmodel.CPFLogin);
                 this.EntraUser(leituraFunc.CPF, false);
+                TempData["MensagemAviso"] = "Login realizado com sucesso! Bem-vindo:" + leituraFunc.Nome;
 
                 if (Url.IsLocalUrl(loginviewmodel.UrlRetorno))
                     return Redirect(loginviewmodel.UrlRetorno);
@@ -126,16 +129,16 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
             {
                 bool existeCliente = cliente.VerificaClienteExiste(loginviewmodel.CPFLogin, loginviewmodel.SenhaLogin);
 
-                if(existeCliente == true)
+                if (existeCliente == true)
                 {
                     var tempFunc = new Cliente().ListaUMClienteLOGIN(loginviewmodel.CPFLogin);
                     this.EntraUser(tempFunc.CPF, false);
-
+                    TempData["MensagemAviso"] = "Login realizado com sucesso! Bem-vindo:" + tempFunc.Nome;
                     if (Url.IsLocalUrl(loginviewmodel.UrlRetorno))
                         return Redirect(loginviewmodel.UrlRetorno);
                     else
                         return RedirectToAction("Index", "Home");
-                    
+
                 }
                 else
                 {
@@ -143,12 +146,6 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
                 }
 
             }
-
-
-
-
-
-
             //É ENVIADO O PARÂMETRO ÚNICO PARA BUSCAR O REGISTRO NO BD
             //funcionario = funcionario.ListaUMFuncioLOGIN(loginviewmodel.CPFLogin);
 
@@ -209,6 +206,7 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
         public ActionResult Logout()
         {
             Request.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            TempData["MensagemAviso"] = "Logout feito com sucesso!";
             return RedirectToAction("Login", "Login");
         }
 

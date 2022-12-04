@@ -19,11 +19,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="@Url.Action("Index", "Home")"><img src="~/Image/logogameswave.png" alt="logo" id="logo"></a>
+            <a href="#"><img src="~/Image/logogameswave.png" alt="logo" id="logo"></a>
         </div>
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="@Url.Action("Index", "Home")">Home</a>
+                <a class="navbar-brand" href="#">Home</a>
             </div>
             <ul class="nav navbar-nav" id="herderNav">
                 <li><a href="#">Promoções</a></li>
@@ -34,7 +34,7 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <!--Barra de pesquisa-->
-                <div class="navbar-form navbar-left" id="formPesquisa">
+                @*<div class="navbar-form navbar-left" id="formPesquisa">
                     @using (Html.BeginForm("Index", "Home", FormMethod.Get))
                     {
                         <form>
@@ -48,24 +48,24 @@
                             </div>
                         </form>
                     }
-                </div>
+                </div>*@
 
 
                 @if (User.Identity.IsAuthenticated)
                 {
                     <!--Dropdown-->
                     @*<li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Painel do funcionario<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li> @Html.ActionLink("Consultar Funcionarios", "ConsulFuncio", "Funcionario")</li>
-                            <li>@Html.ActionLink("Consultar Clientes", "ConsulCli", "Cliente")</li>
-                            <li>@Html.ActionLink("Consultar Produtos", "ConsulProduto", "Produto")</li>
-                            <li>@Html.ActionLink("Ver Carrinho", "VerCarrinhoIndex", "Carrinho")</li>
-                            <li>@Html.ActionLink("Fazer Venda", "FazerVenda", "Carrinho")</li>
-                            <li>@Html.ActionLink("Consultar Vendas", "ConsulVenda", "Carrinho")</li>
-                            <li>@Html.ActionLink("Consultar Cupons", "ConsulCupom", "Cupom")</li>
-                        </ul>
-                    </li>*@
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Painel do funcionario<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li> @Html.ActionLink("Consultar Funcionarios", "ConsulFuncio", "Funcionario")</li>
+                                <li>@Html.ActionLink("Consultar Clientes", "ConsulCli", "Cliente")</li>
+                                <li>@Html.ActionLink("Consultar Produtos", "ConsulProduto", "Produto")</li>
+                                <li>@Html.ActionLink("Ver Carrinho", "VerCarrinhoIndex", "Carrinho")</li>
+                                <li>@Html.ActionLink("Fazer Venda", "FazerVenda", "Carrinho")</li>
+                                <li>@Html.ActionLink("Consultar Vendas", "ConsulVenda", "Carrinho")</li>
+                                <li>@Html.ActionLink("Consultar Cupons", "ConsulCupom", "Cupom")</li>
+                            </ul>
+                        </li>*@
                     <li><a href="@Url.Action("Logout", "Login")"><img id="imgHeader" src="~/Image/log_out.png" alt="Carrinho"></a></li>
                     <li><a href="@Url.Action("VerCarrinhoIndex", "Carrinho")"><img id="imgHeader" src="~/Image/shopping-cart (1).png" alt="Carrinho"></a></li>
 
@@ -96,11 +96,11 @@
                 <div class="col-xs-6 col-md-3">
                     <h6>Guias rápidos</h6>
                     <ul class="footer-links">
-                        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
-                        <li><a href="@Url.Action("Index", "Home")">Sobre</a></li>
-                        <li><a href="@Url.Action("Login", "Home")">Login</a></li>
-                        <li><a href="@Url.Action("Index", "Home")">Contato</a></li>
-                        <li><a href="@Url.Action("Index", "Home")">Categorias</a></li>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Sobre</a></li>
+                        <li><a href="#">Login</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Categorias</a></li>
                     </ul>
                 </div>
 
@@ -133,5 +133,3 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
-
-

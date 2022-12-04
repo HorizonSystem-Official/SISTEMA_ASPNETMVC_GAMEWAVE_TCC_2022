@@ -2,7 +2,8 @@
 
 @{
     ViewBag.Title = "Login";
-    
+    Layout = "~/Views/Shared/_Layout_Login_navbar.cshtml";
+
 }
 <style>
     #conteiner {
@@ -115,6 +116,13 @@
     }
 </style>
 
+@if (TempData["MensagemAviso"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["MensagemAviso"]
+    </div>
+}
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -128,15 +136,15 @@
                 @Html.EditorFor(model => model.CPFLogin, new { htmlAttributes = new { @class = "form-control", @id = "input", placeholder = "CPF" } })
                 @Html.ValidationMessageFor(model => model.CPFLogin, "", new { @class = "text-danger" })
 
-                @Html.EditorFor(model => model.SenhaLogin, new { htmlAttributes = new { @class = "form-control", @id = "input", placeholder = "Senha"} })
+                @Html.EditorFor(model => model.SenhaLogin, new { htmlAttributes = new { @class = "form-control", @id = "input", placeholder = "Senha" } })
                 @Html.ValidationMessageFor(model => model.SenhaLogin, "", new { @class = "text-danger" })
-                <a href="#">Esqueceu sua senha?</a>
+                @*<a href="#">Esqueceu sua senha?</a>*@
                 <button type="submit" class="button">Entrar</button>
             </form>
         </div>
         <div class="col-sm-6 boxLogin" id="Cadastre">
-            <h1>Ola!</h1>
-            <p>Ainda não tem conta? click aqui para se cadastrar</p>
+            <h1>Olá!</h1>
+            <p>Ainda não tem conta? Clique aqui para se cadastrar</p>
             <a class="button ghost" href="@Url.Action("CadCliente","Cliente")" id="signUp">Cadastrar-se</a>
         </div>
     </div>

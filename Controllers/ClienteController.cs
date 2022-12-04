@@ -92,7 +92,7 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
 
             //EMITE UMA MENSAGEM PELO TEMPDATA DE SUCESSO E REDIRECIONA PARA A CONSULTA DELES
             TempData["MensagemAviso"] = "Cadastro do cliente feito com sucesso!";
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Login");
         }
 
         [CustomAuthorize("Funcionario")]

@@ -35,7 +35,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <!--Barra de pesquisa-->
                 <div class="navbar-form navbar-left" id="formPesquisa">
-                    @using (Html.BeginForm("ConsulProduto", "Produto", FormMethod.Get))
+                    @using (Html.BeginForm("Index", "Login", FormMethod.Get))
                     {
                         <form>
                             <div class="input-group">
@@ -57,7 +57,7 @@
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Painel do funcionario<span class="caret"></span></a>
                         <ul class="dropdown-menu">         
-                            <li> @Html.ActionLink("Consultar Funcionarios", "ConsulFuncio", "Funcionario")</li>
+                            <li> @Html.ActionLink("Consultar Funcionários", "ConsulFuncio", "Funcionario")</li>
                             <li>@Html.ActionLink("Consultar Clientes", "ConsulCli", "Cliente")</li>
                             <li>@Html.ActionLink("Consultar Produtos", "ConsulProduto", "Produto")</li>
                             @*<li>@Html.ActionLink("Ver Carrinho", "VerCarrinhoIndex", "Carrinho")</li>
@@ -90,7 +90,7 @@
             <div class="row">
                 <div class="col-xs-6 col-md-5" id="descFooter">
                     <h6>Nossa empresa</h6>
-                    <p class="text-justify">Fundada em 2022, aspiramos dar uma melhor interface e experiencia para nossos amados clientes.  </p>
+                    <p class="text-justify">Fundada em 2022, aspiramos dar uma melhor interface e experiência para nossos amados clientes.  </p>
                 </div>
 
                 <div class="col-xs-6 col-md-3">

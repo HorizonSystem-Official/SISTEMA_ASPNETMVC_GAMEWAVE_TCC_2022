@@ -86,5 +86,12 @@ namespace TCC_Sistema_Cliente_Jogos_2022.Controllers
 
             return View(ListaComentarios);
         }
+
+
+        public ActionResult Error(string mensagem)
+        {
+            ViewBag.error = "Entre em contato com um profissional TI e passe a seguinte mensagem: {" + mensagem + "}";
+            return View();
+        }
     }
 }

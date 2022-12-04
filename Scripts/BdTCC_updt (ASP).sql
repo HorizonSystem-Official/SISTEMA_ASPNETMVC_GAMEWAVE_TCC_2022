@@ -1,8 +1,6 @@
 create database bdTccJogosASP;
 use bdTccJogosASP;
 
-select*from tbcliente;
-
 CREATE TABLE tbFuncionario (
     IdFunc INT PRIMARY KEY auto_increment,
     NomeFunc Varchar(150) not null,
@@ -261,9 +259,8 @@ end $$
 delimiter $$
 create procedure spDadosFuncLOGIN(SpCPFFunc varchar(20))
 begin
-	select CPF, Senha from tbFuncionario where CPF=SpCPFFunc;
+	select CPF, NomeFunc,  Senha from tbFuncionario where CPF=SpCPFFunc;
 end $$
-
 
 delimiter $$    
 create procedure spDadosFunc2(spCPFFunc varchar(20))
@@ -435,10 +432,9 @@ create procedure spDeleteFunc(spIdFunc int)
 begin
 	select CodProd into @CodProd from tbproduto where fk_Funcionario_IdFunc = spIdFunc;
 	delete from tbcomentarios where Fk_CodProd = @CodProd;
-    delete from tbproduto where Fk_CodProd = @CodProd;
+    delete from tbproduto where CodProd = @CodProd;
 	delete from tbFuncionario where IdFunc = spIdFunc;
 end $$
-
 
 delimiter $$
 create procedure spDeleteProd(spCodProd int)
@@ -514,20 +510,27 @@ end $$
 #									#
 #####################################
 
-Call spInsertFuncionario("Joao", "1990/07/19", "132.457.576-45", "9654", "Caixa");
-Call spInsertFuncionario("Seraphine", "2009/07/29", "554.795.508-61", "Zabuza", "Caixa");
-Call spInsertFuncionario("Fiddle da Silva", "2009/09/11", "967.335.408-19", "6769", "Caixa");
-Call spInsertFuncionario("Luxanna", "2008/09/29", "133.246.488-23", "198076", "Caixa");
-Call spInsertFuncionario("Jorge da Silva Pereira", "1978/07/29", "950.871.548-08", "borabill", "Caixa");
 
-call spInsertCliente("333.333.333-33", "Julia Maria", "1990-03-14", "123456", "Jularia@gmail.com","(41) 98674-9617");
+Call spInsertFuncionario("João da Silva Almeida", "1990/07/19", "132.457.576-45", "9654", "Caixa");
+Call spInsertFuncionario("Larissa Gomes de Araujo", "2004/07/29", "554.795.508-61", "Zabuza", "Caixa");
+Call spInsertFuncionario("Fernando Oliveira dos Santos", "2009/09/11", "967.335.408-19", "6769", "Caixa");
+Call spInsertFuncionario("Lucas Miguel de Araujo ", "2004/09/29", "133.246.488-23", "198076", "Caixa");
+Call spInsertFuncionario("Jorge da Silva Perreira", "1978/07/02", "950.871.548-08", "borabill", "Caixa");
+
+
+call spInsertCliente("918.545.618-38", "Julia Maria", "1990-03-02", "123456", "Jularia@gmail.com","(41) 98674-9617");
+call spInsertCliente("561.414.118-94", "Angel of The Night", "1990-03-14", "123456", "anjinho@gmail.com","(41) 97674-9617");
+
+
+
+/*
 call spInsertCliente("918.545.618-38", "Enzo Braga", "2009-04-14", "123456", "LordOfDarkness69@gmail.com","(11) 94002-8922");
 call spInsertCliente("257.938.258-51", "Hugo Domingues", "1990-03-14", "123456", "semcriatividade123@gmail.com","(41) 98671-9617");
 call spInsertCliente("674.364.258-46", "Vinicius Monteiro", "1990-03-14", "123456", "blublu@gmail.com","(41) 98672-9617");
 call spInsertCliente("057.184.478-29", "Kaleb Duarte", "1990-03-14", "123456", "qmekaleb@gmail.com","(41) 98673-9617");
 call spInsertCliente("561.414.118-94", "Angel of The Night", "1990-03-14", "123456", "anjinho@gmail.com","(41) 97674-9617");
 call spInsertCliente("561.454.118-94", "Catarina Rodrigues", "1990-03-14", "123456", "desempregada123@gmail.com","(41) 98874-9617");
-
+*/
 call spInsertProduto("Gta 2","Tiro", 10, "Grand Theft Auto está de volta. Os carros estão mais rápidos. As ruas mais movimentadas. Os bandidos piores. A polícia mais brava. E agora, o FBI e o exército estão se envolvendo...
 Sete gangues violentas se envolvem em uma disputa de poder e cabe a você construir sua reputação.
 Respeito se conquista, não é ganho.","2001", "+14", 20.32, "https://m.media-amazon.com/images/M/MV5BMjZjZmFkZDYtYzBlMi00MmNiLWFjYWItNjBhZTgzNzBiNGM1XkEyXkFqcGdeQXVyNDY4OTcyNDQ@._V1_FMjpg_UX1000_.jpg-", 1);
@@ -554,6 +557,7 @@ call spInsertProduto("Minecraft","Simulação", 999,"Explore mundos infinitos e 
 call spInsertImg("https://i.ytimg.com/vi/RdGCN2mtgJQ/maxresdefault.jpg", "Imagem",2);
 call spInsertImg("https://i.ytimg.com/vi/3FzriRcKwjg/maxresdefault.jpg", "Imagem",1);
 call spInsertImg("https://img.utdstc.com/screen/fad/8f5/fad8f5dd318d30ce1e8ba2548038bf2f8853b0edae95185627aa93b7d09920d8:200", "Imagem",1);
+/*
 call spInsertComentarios("Muito bom", 3, "333.333.333-33");
 call spInsertComentarios("jogo epico nosssa", 1, "333.333.333-33");
 
@@ -604,13 +608,13 @@ call spInsertComentarios("jogo epico", 16, "257.938.258-51");
 call spInsertComentarios("Não joguem", 16, "333.333.333-33");
 
 call spInsertComentarios("Amo esses carros", 17, "257.938.258-51");
-
+*/
 #####################################
 #									#
 #			Exemplos (Carrinho)		#
 #									#
 #####################################
-
+/*
 call spInsertCupom("Off10", 10, 2);
 call spInsertItemCarrinho(1, 2, "918.545.618-38");
 call spInsertCarrinho("", "333.333.333-33");
@@ -620,12 +624,10 @@ call spDadosCliente("918.545.618-38");
 call spInsertItemCarrinho(1 , 4, "333.333.333-33");
 call spMostraItens("918.545.618-38");
 call spTotalCarrinho("333.333.333-33");
+*/
 
-call spDadosFunc(1);
-
-
+/*
 call spDeleteProd(3,"333.333.333-33");
-
 
 call spMostraProd(3);
 call spMostraProdSimples(2);
@@ -636,3 +638,4 @@ call spMostraComentarios(1);
 call spMostraProdDetalhado(1);
 
 call spMostraItens("554.359.168-38");
+*/

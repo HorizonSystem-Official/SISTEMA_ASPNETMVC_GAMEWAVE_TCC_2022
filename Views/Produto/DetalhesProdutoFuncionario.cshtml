@@ -36,6 +36,14 @@
             </div>
 
             <div class="p-2 mt-2">
+                <h6 id="textProd">Quantidade em Estoque: @Html.DisplayFor(model => model.ProdQtnEstoque)</h6>
+            </div>
+
+            <div class="p-2 mt-2">
+                <h6 id="textProd">Valor a ser vendido:R$@Html.DisplayFor(model => model.ProdQtnEstoque)</h6>
+            </div>
+
+            <div class="p-2 mt-2">
                 @{
                     string faixa = Model.ProdFaixaEtaria.ToString();
                     switch (faixa)
@@ -72,9 +80,9 @@
             </div>
 
             @*<div class="row">
-                <h3 id="price">R$ @Html.DisplayFor(model => model.ProdValor)</h3>
-                <a href="@Url.Action("AdicionarAOCarrinho", "Carrinho", new { codprod = Model.CodProd})" id="btnAddCar" class="btn">add car</a>
-            </div>*@
+            <h3 id="price">R$ @Html.DisplayFor(model => model.ProdValor)</h3>
+            <a href="@Url.Action("AdicionarAOCarrinho", "Carrinho", new { codprod = Model.CodProd})" id="btnAddCar" class="btn">add car</a>
+        </div>*@
 
         </div>
     </div>

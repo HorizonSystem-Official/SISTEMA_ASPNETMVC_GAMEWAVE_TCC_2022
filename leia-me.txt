@@ -5,7 +5,7 @@
 -Após abrir a pasta do projeto no visual studio por meio do "TCC_Sistema_Cliente_Jogos_2022.sln", vá para o Web.config e dentro da connectionStrings
 sua senha do banco de dados local em "password ="
 
--Para executar o sistema, utilize a view Home da HomeController e execute com o botão "ISS EXPRESS"
+-Para executar o sistema, utilize a view Home da HomeController e execute com o botão "ISS EXPRESS" com o navegador Google Chrome selecionado
 
 Para utilizar o sistema como CLIENTE:
 

@@ -51,7 +51,7 @@
 
             <div class="col-md-4 boxHome" id="BoxHomeEscuro">
                 <h3 class="group inner list-group-item-heading">
-                    Promoção rapida
+                    Promoção rápida
                 </h3>
 
                 <p class="lead" id="textoBoxAuxHome">
@@ -83,8 +83,18 @@
 
     <div class="container aling-center" id="BoxProdHome">
         <h1 class="text-capitalize">
-            Catalogo
+            Catálogo
         </h1>
+        <h5 class="text-capitalize">
+            Clique na imagem para ver mais sobre o produto!
+        </h5>
+        @if (TempData["Pesquisa"] != null)
+            {
+                <div>
+                    <h3>Resultado da pesquisa: @TempData["Pesquisa"]</h3>
+                </div>
+            }
+
         <div class="row">
             @foreach (var item in Model)
             {
@@ -119,7 +129,7 @@
 
     <img src="~/Image/UMA JORNADA INTERGALÁTICA (1).png" width="100%" height="100%"/>
 
-    <img src="~/Image/BENDY AND THE DARK REVIVAL.jpg" width="100%" height="100%" />
+    @*<img src="~/Image/BENDY AND THE DARK REVIVAL.jpg" width="100%" height="100%" />*@
 
     <img src="~/Image/logoMarcasGames.png" id="imgMarcas" />
 </div>
