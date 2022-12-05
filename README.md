@@ -3,11 +3,11 @@ Turma: 3DS ETIM (2022)
 
 # Índice 
 
-- [Descrição sobre o Projeto](#Descrição sobre o Projeto)
-- [Características do Projeto](#Características do Projeto)
-- [Páginas(Views) do Sistema (Demonstração)](#Páginas(Views) do Sistema (Demonstração))
+- [Descrição sobre o Projeto](#Descrição-sobre-o-Projeto)
+- [Características do Projeto](#Características-do-Projeto)
+- [Páginas(Views) do Sistema (Demonstração)](#Páginas(Views)-do-Sistema-(Demonstração))
 - [Contribuidores](#Contribuidores)
-- [Como instalar/usar o sistema](#Como instalar/usar o sistema)
+- [Como instalar/usar o sistema](#Como-instalar/usar-o-sistema)
 
 # Descrição sobre o Projeto
 <p> É um projeto para o TCC do curso Desenvolvimento de Sistemas (DS) Integrado ao Ensino Médio da escola ETEC PROFESSOR BASILIDES DE GODOY.</p> 
