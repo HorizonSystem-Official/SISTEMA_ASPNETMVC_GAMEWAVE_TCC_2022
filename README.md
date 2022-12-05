@@ -32,7 +32,7 @@ Turma: 3DS ETIM (2022)
 ## Contribuidores
 <br />
 *<a href="https://github.com/GuiMatheus1313">Guilherme Matheus de Jesus de Araujo</a> - Desenvolvedor Back-End <br />
-*<a href="https://github.com/LucasBara-dising">Lucas de Lima Barauna</a> - Desenvolvedor Front-End <br />
+*<a href="https://github.com/LucasBara-dising">Lucas de Lima Barauna</a> - Desenvolvedor Front-End e Banco <br />
 *<a href="https://github.com/JoaoPauloAa">João Paulo Almeida Aurelio</a> - Desenvolvedor Back-End <br />
 *<a href="https://github.com/OOK7">Pedro Ribeiro Di Muzio</a> - Desenvolvedor Front-End e Banco <br />
 *<a href="https://github.com/DiegoAndrade06">Diego de Oliveira Andrade</a> - Desenvolvedor Front-End e Banco <br />
@@ -40,4 +40,4 @@ Turma: 3DS ETIM (2022)
 *<a href="https://github.com/carlosfreire15">Carlos Eduardo Martins Freire</a> - Desenvolvedor Front-End (Wireframe do Sistema)
 
 ## Como instalar/usar o sistema
-<p> Baixe o projeto como .Zip no GitHub e abra o arquivo "leia-me.txt" dentro da pasta do projeto para seguir as intruções para usar o sistema
+<p> Baixe o projeto como .Zip no GitHub, faça a extração, e abra o arquivo "leia-me.txt" dentro da pasta do projeto para seguir as intruções para usar o sistema.
