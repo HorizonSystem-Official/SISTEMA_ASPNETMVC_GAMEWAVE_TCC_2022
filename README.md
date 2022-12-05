@@ -1,5 +1,5 @@
 # <b>SISTEMA ASP.NET do cliente GAME WAVE (fictício) </b>
-Turma: 3DS ETIM (2022)
+Turma: 3º D.S. ETIM (2022)
 
 # Índice 
 
