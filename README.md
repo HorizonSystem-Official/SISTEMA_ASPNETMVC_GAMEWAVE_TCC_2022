@@ -1,5 +1,5 @@
 # <b>SISTEMA ASP.NET do cliente GAME WAVE (fictício) </b>
-
+Turma: 3DS ETIM (2022)
 # Descrição sobre o Projeto
 <p> É um projeto para o TCC do curso Desenvolvimento de Sistemas (DS) Integrado ao Ensino Médio da escola ETEC PROFESSOR BASILIDES DE GODOY.</p> 
 <p>O tema proposto foi de uma loja de games online que necessitava os serviços da empresa Horizon System (fictícia) para desenvolver softwares que ajudasse a loja, sendo um desses softwares um sistema E-commerce.</p>
